@@ -1,0 +1,2 @@
+[CustomSkin]
+CommandButtonCooldown=interface\cooldown ui.mdx
