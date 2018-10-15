@@ -53,7 +53,7 @@
             "args": [
                 "obj",
                 "${workspaceRoot}",
-                "${workspaceRoot}/LOL_TD.w3x"
+                "${workspaceRoot}/诛仙：重生录.w3x"
             ],
             "problemMatcher": []
         },
@@ -68,7 +68,7 @@
             },
             "args": [
                 "lni",
-                "${workspaceRoot}/LOL_TD.w3x",
+                "${workspaceRoot}/诛仙：重生录.w3x",
                 "${workspaceRoot}"
             ]
         },
@@ -84,7 +84,7 @@
             "args": [
                 "slk",
                 "${workspaceRoot}",
-                "${workspaceRoot}/LOL_TD].w3x"
+                "${workspaceRoot}/诛仙：重生录].w3x"
             ]
         },
         {
