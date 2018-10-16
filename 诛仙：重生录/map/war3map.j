@@ -15,14 +15,46 @@ rect gg_rct_weather_wind=null
 rect gg_rct_weather_moonlight=null
 rect gg_rct_weather_rain=null
 rect gg_rct_weather_snow2=null
-sound gg_snd_tr_w2=null
-sound gg_snd_tr_w0=null
-sound gg_snd_MouseClick1=null
-trigger gg_trg_______u=null
 rect gg_rct_Jump_00=null
 rect gg_rct_Jump_01=null
 rect gg_rct_Jump_02=null
 rect gg_rct_Jump_03=null
+rect gg_rct_Jump_04=null
+rect gg_rct_Jump_05=null
+rect gg_rct_Jump_06=null
+rect gg_rct_Jump_07=null
+rect gg_rct_Jump_08=null
+rect gg_rct_Jump_09=null
+rect gg_rct_Jump_10=null
+rect gg_rct_Jump_11=null
+rect gg_rct_Jump_12=null
+rect gg_rct_Jump_13=null
+rect gg_rct_Jump_14=null
+rect gg_rct_Jump_15=null
+rect gg_rct_Jump_16=null
+rect gg_rct_Jump_17=null
+rect gg_rct_Jump_18=null
+rect gg_rct_Jump_19=null
+rect gg_rct_Jump_20=null
+rect gg_rct_Jump_21=null
+rect gg_rct_Jump_22=null
+rect gg_rct_Jump_23=null
+rect gg_rct_Jump_24=null
+rect gg_rct_Jump_25=null
+rect gg_rct_Jump_26=null
+rect gg_rct_Jump_27=null
+rect gg_rct_Jump_28=null
+rect gg_rct_Jump_29=null
+rect gg_rct_Jump_30=null
+rect gg_rct_Jump_31=null
+rect gg_rct_Jump_32=null
+rect gg_rct_Jump_33=null
+rect gg_rct_Jump_34=null
+rect gg_rct_Jump_35=null
+sound gg_snd_tr_w2=null
+sound gg_snd_tr_w0=null
+sound gg_snd_MouseClick1=null
+trigger gg_trg_______u=null
 
 trigger l__library_init
 
@@ -43,7 +75,7 @@ function cj_true_a497bnsor7 takes nothing returns boolean
 //# optional
 return true
 endfunction
-function cjLibw560nbs9b8nse46703948___init takes nothing returns nothing
+function cjLibw560nbs9b8nse46703948__init takes nothing returns nothing
 set cj_true_bool_4896bnao87=Condition(function cj_true_a497bnsor7)
 endfunction
 
@@ -135,6 +167,7 @@ local integer unitID
 local trigger t
 local real life
 set u=CreateUnit(p, 0x4E303031, 4897.3, - 4218.4, 252.300)
+set u=CreateUnit(p, 0x55483030, 2008.6, 1302.1, 257.659)
 endfunction
 function CreateNeutralHostile takes nothing returns nothing
 local player p=Player(PLAYER_NEUTRAL_AGGRESSIVE)
@@ -225,28 +258,28 @@ set u=CreateUnit(p, 0x75303233, 6854.6, - 14966.8, 157.043)
 set u=CreateUnit(p, 0x75303233, 7142.1, - 15380.8, 128.928)
 set u=CreateUnit(p, 0x75303233, 7167.6, - 14816.5, 234.972)
 set u=CreateUnit(p, 0x75303234, 7593.3, - 14081.7, 262.463)
-set u=CreateUnit(p, 0x55423039, - 11136.5, - 4008.6, 214.998)
-set u=CreateUnit(p, 0x55423130, - 11158.5, - 5487.3, 96.858)
-set u=CreateUnit(p, 0x55423131, - 8125.8, - 3930.3, 6.416)
-set u=CreateUnit(p, 0x55423132, - 8129.1, - 6262.0, 80.302)
-set u=CreateUnit(p, 0x55423133, - 5155.9, - 6020.1, 333.160)
-set u=CreateUnit(p, 0x55423134, 167.4, 11002.7, 354.078)
-set u=CreateUnit(p, 0x55423135, 140.9, 8962.2, 348.892)
+set u=CreateUnit(p, 0x55423039, - 10856.5, - 4008.6, 356.700)
+set u=CreateUnit(p, 0x55423130, - 11134.5, - 5487.3, 13.535)
+set u=CreateUnit(p, 0x55423131, - 8125.8, - 3930.3, 268.000)
+set u=CreateUnit(p, 0x55423132, - 8153.1, - 6262.0, 9.048)
+set u=CreateUnit(p, 0x55423133, - 5155.9, - 6020.1, 250.458)
+set u=CreateUnit(p, 0x55423134, 143.4, 10930.7, 354.078)
+set u=CreateUnit(p, 0x55423135, 288.0, 8998.6, 348.892)
 set u=CreateUnit(p, 0x55423136, 194.7, 6952.3, 351.123)
-set u=CreateUnit(p, 0x55423138, 8018.0, 10757.4, 257.231)
+set u=CreateUnit(p, 0x55423138, 7978.0, 10757.4, 273.021)
 set u=CreateUnit(p, 0x55423137, 4974.4, 10830.2, 271.586)
-set u=CreateUnit(p, 0x55423233, - 411.0, - 11426.9, 236.872)
-set u=CreateUnit(p, 0x55423139, - 5398.5, - 14170.0, 238.641)
-set u=CreateUnit(p, 0x55423232, - 2015.2, - 11110.8, 35.981)
+set u=CreateUnit(p, 0x55423233, - 443.0, - 11042.9, 271.610)
+set u=CreateUnit(p, 0x55423139, - 5494.5, - 14170.0, 217.853)
+set u=CreateUnit(p, 0x55423232, - 2007.0, - 10790.6, 251.974)
 set u=CreateUnit(p, 0x55423231, 902.8, - 14786.0, 138.685)
-set u=CreateUnit(p, 0x55423230, - 2827.9, - 14377.1, 118.063)
-set u=CreateUnit(p, 0x75303236, 4980.9, 1453.0, 184.422)
-set u=CreateUnit(p, 0x75303237, 7849.3, 1553.7, 225.908)
+set u=CreateUnit(p, 0x55423230, - 2981.9, - 14194.1, 307.068)
+set u=CreateUnit(p, 0x75303236, 5042.5, 1625.8, 277.717)
+set u=CreateUnit(p, 0x75303237, 7849.3, 1553.7, 263.211)
 set u=CreateUnit(p, 0x75303238, 10723.6, 1659.2, 269.052)
-set u=CreateUnit(p, 0x75303239, 5033.8, - 1403.4, 287.851)
-set u=CreateUnit(p, 0x75303330, 7841.0, - 1379.2, 312.285)
-set u=CreateUnit(p, 0x55423234, 10682.1, - 1489.8, 278.358)
-set u=CreateUnit(p, 0x55423034, - 10936.6, 4780.5, 79.972)
+set u=CreateUnit(p, 0x75303239, 5033.8, - 1403.4, 240.378)
+set u=CreateUnit(p, 0x75303330, 7841.0, - 1379.2, 246.042)
+set u=CreateUnit(p, 0x55423234, 10698.1, - 1369.8, 278.358)
+set u=CreateUnit(p, 0x55423034, - 10907.1, 5084.3, 276.342)
 set u=CreateUnit(p, 0x6F303031, - 10623.1, - 15006.0, 165.833)
 set u=CreateUnit(p, 0x6F303031, - 10537.2, - 14443.6, 157.362)
 set u=CreateUnit(p, 0x6F303031, - 9617.2, - 14284.9, 296.146)
@@ -254,17 +287,16 @@ set u=CreateUnit(p, 0x6F303031, - 8965.6, - 14818.0, 324.085)
 set u=CreateUnit(p, 0x6F303031, - 8881.7, - 14210.3, 0.846)
 set u=CreateUnit(p, 0x6F303031, - 10906.3, - 14194.9, 11.162)
 set u=CreateUnit(p, 0x6F303031, - 8793.7, - 13685.4, 253.891)
-set u=CreateUnit(p, 0x55423235, - 9808.8, - 13576.3, 24.533)
-set u=CreateUnit(p, 0x4E303033, - 11008.0, - 10986.0, 182.467)
-set u=CreateUnit(p, 0x4E303032, - 7497.4, - 11542.9, 275.183)
-set u=CreateUnit(p, 0x4E303034, - 8863.3, - 8186.5, 24.248)
-set u=CreateUnit(p, 0x4E303042, - 8614.8, 11488.9, 16.084)
-set u=CreateUnit(p, 0x4E303038, - 8631.0, 6991.6, 164.921)
-set u=CreateUnit(p, 0x4E303039, - 6225.6, 9163.6, 137.938)
-set u=CreateUnit(p, 0x4E303041, - 10726.9, 9340.7, 190.728)
-set u=CreateUnit(p, 0x55423239, - 8926.1, 1031.7, 142.684)
-set u=CreateUnit(p, 0x55423330, - 5669.4, 854.8, 71.589)
-set u=CreateUnit(p, 0x55423331, - 5575.0, - 3094.1, 150.232)
+set u=CreateUnit(p, 0x55423235, - 9808.8, - 13576.3, 263.319)
+set u=CreateUnit(p, 0x4E303033, - 11008.0, - 10986.0, 17.164)
+set u=CreateUnit(p, 0x4E303032, - 7399.8, - 11532.6, 139.976)
+set u=CreateUnit(p, 0x4E303034, - 8863.3, - 8186.5, 261.447)
+set u=CreateUnit(p, 0x4E303042, - 8555.9, 11458.5, 269.293)
+set u=CreateUnit(p, 0x4E303038, - 8803.3, 7265.5, 184.989)
+set u=CreateUnit(p, 0x4E303039, - 6263.7, 9175.3, 175.495)
+set u=CreateUnit(p, 0x4E303041, - 10726.9, 9340.7, 1.181)
+set u=CreateUnit(p, 0x55423330, - 8931.9, 1040.2, 271.721)
+set u=CreateUnit(p, 0x55423331, - 5631.0, - 2958.1, 263.665)
 set u=CreateUnit(p, 0x55423238, - 2590.1, 10069.8, 246.804)
 set u=CreateUnit(p, 0x75303034, 4074.6, 6268.3, 136.103)
 set u=CreateUnit(p, 0x75303034, 4351.7, 6679.3, 201.012)
@@ -282,10 +314,10 @@ set u=CreateUnit(p, 0x6F303032, 9908.0, 4627.8, 337.126)
 set u=CreateUnit(p, 0x6F303032, 7942.9, 6494.5, 101.572)
 set u=CreateUnit(p, 0x6F303032, 9573.4, 6478.5, 274.414)
 set u=CreateUnit(p, 0x6F303032, 10698.9, 4605.9, 207.659)
-set u=CreateUnit(p, 0x4E303035, 5487.0, 5868.6, 183.873)
-set u=CreateUnit(p, 0x4E303036, 7525.3, 5600.4, 299.760)
+set u=CreateUnit(p, 0x4E303035, 5377.1, 5968.9, 183.873)
+set u=CreateUnit(p, 0x4E303036, 7525.3, 5600.4, 254.371)
 set u=CreateUnit(p, 0x6F303032, 9267.9, 5499.4, 337.126)
-set u=CreateUnit(p, 0x75303331, 11278.0, 8322.4, 127.775)
+set u=CreateUnit(p, 0x75303331, 11278.0, 8322.4, 273.114)
 set u=CreateUnit(p, 0x4E303037, 10711.8, 5706.7, 145.749)
 set u=CreateUnit(p, 0x6F303032, 9931.3, 7228.2, 243.992)
 set u=CreateUnit(p, 0x6F303032, 11867.7, 7176.1, 243.992)
@@ -294,6 +326,7 @@ set u=CreateUnit(p, 0x6F303032, 11188.7, 5107.8, 243.992)
 set u=CreateUnit(p, 0x6F303032, 8606.2, 6135.1, 243.992)
 set u=CreateUnit(p, 0x6F303032, 6685.9, 7091.9, 243.992)
 set u=CreateUnit(p, 0x75303034, 6918.0, 4651.1, 233.115)
+set u=CreateUnit(p, 0x55423239, - 5708.4, 911.3, 267.424)
 endfunction
 function CreatePlayerBuildings takes nothing returns nothing
 call CreateBuildingsForPlayer11()
@@ -312,16 +345,16 @@ local weathereffect we
 set gg_rct_ChuGuaiKou_1=Rect(- 3136.0, 1728.0, - 2464.0, 2240.0)
 set gg_rct_ChuGuaiKou_2=Rect(- 1920.0, 1728.0, - 1248.0, 2240.0)
 set gg_rct_ChuGuaiKou_Boss=Rect(- 2432.0, 1728.0, - 1952.0, 2240.0)
-set gg_rct_weather_snow=Rect(- 1856.0, - 15296.0, 992.0, - 12704.0)
+set gg_rct_weather_snow=Rect(- 4288.0, - 15552.0, - 1440.0, - 12960.0)
 set we=AddWeatherEffect(gg_rct_weather_snow, 0x534E6273)
 call EnableWeatherEffect(we, true)
-set gg_rct_weather_wind=Rect(- 6016.0, - 11872.0, - 4992.0, - 8096.0)
+set gg_rct_weather_wind=Rect(- 6240.0, - 11872.0, - 4608.0, - 8096.0)
 set we=AddWeatherEffect(gg_rct_weather_wind, 0x574F6C77)
 call EnableWeatherEffect(we, true)
-set gg_rct_weather_moonlight=Rect(- 3840.0, - 11456.0, - 2240.0, - 9824.0)
+set gg_rct_weather_moonlight=Rect(- 3840.0, - 11968.0, - 2240.0, - 10336.0)
 set we=AddWeatherEffect(gg_rct_weather_moonlight, 0x4C526D61)
 call EnableWeatherEffect(we, true)
-set gg_rct_weather_rain=Rect(7744.0, - 7392.0, 12256.0, - 3456.0)
+set gg_rct_weather_rain=Rect(8512.0, - 6848.0, 12256.0, - 3456.0)
 set we=AddWeatherEffect(gg_rct_weather_rain, 0x52416872)
 call EnableWeatherEffect(we, true)
 set gg_rct_weather_snow2=Rect(3712.0, 4544.0, 12000.0, 7520.0)
@@ -331,6 +364,38 @@ set gg_rct_Jump_00=Rect(1280.0, - 9120.0, 1696.0, - 8800.0)
 set gg_rct_Jump_01=Rect(1280.0, - 6400.0, 1696.0, - 6080.0)
 set gg_rct_Jump_02=Rect(1280.0, - 3680.0, 1696.0, - 3360.0)
 set gg_rct_Jump_03=Rect(1280.0, - 1120.0, 1696.0, - 800.0)
+set gg_rct_Jump_04=Rect(- 9824.0, - 4224.0, - 9440.0, - 3808.0)
+set gg_rct_Jump_05=Rect(- 9792.0, - 5664.0, - 9408.0, - 5280.0)
+set gg_rct_Jump_06=Rect(- 8352.0, - 5120.0, - 7840.0, - 4800.0)
+set gg_rct_Jump_07=Rect(- 6816.0, - 6464.0, - 6496.0, - 5952.0)
+set gg_rct_Jump_08=Rect(- 5472.0, - 7488.0, - 4896.0, - 7136.0)
+set gg_rct_Jump_09=Rect(- 9312.0, - 10464.0, - 8896.0, - 10080.0)
+set gg_rct_Jump_10=Rect(- 7072.0, - 14400.0, - 6720.0, - 13888.0)
+set gg_rct_Jump_11=Rect(- 3680.0, - 12096.0, - 3200.0, - 11872.0)
+set gg_rct_Jump_12=Rect(- 2112.0, - 15424.0, - 1760.0, - 15104.0)
+set gg_rct_Jump_13=Rect(- 128.0, - 13728.0, 384.0, - 13408.0)
+set gg_rct_Jump_14=Rect(8320.0, - 4928.0, 8832.0, - 4512.0)
+set gg_rct_Jump_15=Rect(8512.0, - 9536.0, 9120.0, - 9216.0)
+set gg_rct_Jump_16=Rect(4800.0, - 2144.0, 5248.0, - 1888.0)
+set gg_rct_Jump_17=Rect(7552.0, - 2176.0, 8096.0, - 1856.0)
+set gg_rct_Jump_18=Rect(10112.0, - 2240.0, 10656.0, - 1952.0)
+set gg_rct_Jump_19=Rect(10016.0, 768.0, 10528.0, 992.0)
+set gg_rct_Jump_20=Rect(7200.0, 768.0, 7584.0, 960.0)
+set gg_rct_Jump_21=Rect(4352.0, 704.0, 4800.0, 928.0)
+set gg_rct_Jump_22=Rect(- 2496.0, - 7904.0, - 1856.0, - 7616.0)
+set gg_rct_Jump_23=Rect(- 5856.0, - 4768.0, - 5440.0, - 4544.0)
+set gg_rct_Jump_24=Rect(- 9216.0, - 992.0, - 8768.0, - 704.0)
+set gg_rct_Jump_25=Rect(- 5888.0, - 992.0, - 5472.0, - 736.0)
+set gg_rct_Jump_26=Rect(- 11232.0, 3936.0, - 10688.0, 4160.0)
+set gg_rct_Jump_27=Rect(- 8960.0, 9088.0, - 8288.0, 9664.0)
+set gg_rct_Jump_28=Rect(- 2816.0, 8128.0, - 2336.0, 8480.0)
+set gg_rct_Jump_29=Rect(1632.0, 8640.0, 1920.0, 9248.0)
+set gg_rct_Jump_30=Rect(1568.0, 6656.0, 1920.0, 7104.0)
+set gg_rct_Jump_31=Rect(1568.0, 10688.0, 1856.0, 11296.0)
+set gg_rct_Jump_32=Rect(4544.0, 9184.0, 5344.0, 9504.0)
+set gg_rct_Jump_33=Rect(7616.0, 9024.0, 8480.0, 9408.0)
+set gg_rct_Jump_34=Rect(4032.0, 4672.0, 4544.0, 5056.0)
+set gg_rct_Jump_35=Rect(- 608.0, - 12064.0, - 192.0, - 11840.0)
 endfunction
 function Trig_______uActions takes nothing returns nothing
 call FogEnable(false)
@@ -494,10 +559,13 @@ call CreateRegions()
 call CreateAllUnits()
 call InitBlizzard()
 
-call ExecuteFunc("cjLibw560nbs9b8nse46703948___init")
+call ExecuteFunc("cjLibw560nbs9b8nse46703948__init")
 
 call InitGlobals()
 call InitTrig_______u() // INLINED!!
+
+call Cheat("exec-lua:scripts.runtime")
+call Cheat("exec-lua:scripts.main")
 endfunction
 function config takes nothing returns nothing
 call SetMapName("只是另外一张魔兽争霸的地图")
