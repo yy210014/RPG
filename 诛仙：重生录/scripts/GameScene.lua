@@ -54,31 +54,24 @@ JumpPoint = {
     God = GetRectCenter(Jglobals.gg_rct_Jump_35) --上古神族族长
 }
 
-local function InitPlayerResource()
-    for i = 0, 3 do
+local function InitPlayer()
+    for i = 0, PlayerInfo:GetPlayerCount() - 1 do
         SetPlayerState(Player(i), PLAYER_STATE_RESOURCE_GOLD, 2000)
         SetPlayerState(Player(i), PLAYER_STATE_FOOD_CAP_CEILING, FOOD_MAX)
         --修改了人口上限
         SetPlayerState(Player(i), PLAYER_STATE_RESOURCE_FOOD_CAP, FOOD_MAX)
-    end
-    SetPlayerState(Player(EnemyIndex), PLAYER_STATE_GIVES_BOUNTY, 1)
-end
-
-local function InitPlayerUnit()
-    for i = 0, 3 do
         if
             (GetPlayerController(Player(i)) == MAP_CONTROL_USER and
                 GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING)
          then
-            PlayerInfo:New(Player(i))
         --local p = GetStartLocationLoc(GetPlayerStartLocation(Player(i)))
         -- Worke[i] = AssetsManager.LoadUnit(Player(i), "ug00", 0, 0)
         --  UnitAddItem(Worke[i].Entity, CreateItem(GetId("IU01"), Worke[i]:X(), Worke[i]:Y()))
         --  UnitAddItem(Worke[i].Entity, CreateItem(GetId("IH07"), Worke[i]:X(), Worke[i]:Y()))
-
         --  RemoveGuardPosition(Worke[i].Entity)
         end
     end
+    SetPlayerState(Player(EnemyIndex), PLAYER_STATE_GIVES_BOUNTY, 1)
 end
 
 local function InitAllUnit()
@@ -97,7 +90,7 @@ local function InitAllUnit()
             local unit = AssetsManager.LoadEntity(GetEnumUnit())
             if
                 (IsUnitType(unit.Entity, UNIT_TYPE_STRUCTURE) == false and
-                    unit.Player == Player(PLAYER_NEUTRAL_AGGRESSIVE))
+                    unit.Player.Entity == Player(PLAYER_NEUTRAL_AGGRESSIVE))
              then
                 unit.InitPoint = Location(unit:X(), unit:Y())
             end
@@ -108,12 +101,10 @@ local function InitAllUnit()
 end
 
 function GameScene.OnGameStart()
-    Multiboard.CreateMultiboard()
+    InitPlayer()
     InitAllUnit()
-    InitPlayerResource()
-    InitPlayerUnit()
+    Multiboard.CreateMultiboard()
     -- MonsterRefresh.OnGameStart()
-
     --Game.Log(os.date("%c"))
     --Game.Log(os.time())
 end

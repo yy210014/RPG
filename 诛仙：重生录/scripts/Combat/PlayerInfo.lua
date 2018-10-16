@@ -18,6 +18,7 @@ function PlayerInfo:New(player)
     local newPlayer = mt:New(player)
     newPlayer.KillCount = 0
     mPlayers[newPlayer.Id + 1] = newPlayer
+    Game.Log("New" .. newPlayer.Id .. "," .. "Count" .. #mPlayers)
     GameEventProc.SendEvent("玩家显示", newPlayer.Id + 1, newPlayer.Name)
     return newPlayer
 end
@@ -32,9 +33,10 @@ function PlayerInfo:Kill(playerIndex)
 end
 
 function PlayerInfo:Player(id)
-    return mPlayers[id + 1]
+    Game.Log("Count" .. #mPlayers .. " ," .. id)
+    return mPlayers[id]
 end
 
-function PlayerInfo:GetPlayerCount(index)
-    return #mPlayers
+function PlayerInfo:GetPlayerCount()
+    return 4
 end

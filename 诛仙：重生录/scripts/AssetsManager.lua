@@ -25,7 +25,7 @@ end
 function AssetsManager.LoadUnit(player, id, x, y)
     local entity = CreateUnit(player, GetId(id), x, y, mDefUnitFacing)
     local unit = Unit:New(entity)
-    if (GetPlayerId(unit.Player) == EnemyIndex) then
+    if (unit.Player.Id== EnemyIndex) then
         mEnemyTeamUnits[unit.Entity] = unit
     else
         mPlayerTeamUnits[unit.Entity] = unit
@@ -48,7 +48,7 @@ end
 function AssetsManager.LoadUnitAtLoc(player, id, point)
     local entity = CreateUnitAtLoc(player, GetId(id), point, mDefUnitFacing)
     local unit = Unit:New(entity)
-    if (GetPlayerId(unit.Player) == EnemyIndex) then
+    if (unit.Player.Id == EnemyIndex) then
         mEnemyTeamUnits[unit.Entity] = unit
     else
         mPlayerTeamUnits[unit.Entity] = unit
@@ -70,7 +70,7 @@ end
 
 function AssetsManager.LoadEntity(entity)
     local unit = Unit:New(entity)
-    if (GetPlayerId(unit.Player) == EnemyIndex) then
+    if (unit.Player.Id == EnemyIndex) then
         mEnemyTeamUnits[unit.Entity] = unit
     else
         mPlayerTeamUnits[unit.Entity] = unit
@@ -112,7 +112,7 @@ local function DestroyEnemyObject(unit, destroy)
 end
 
 function AssetsManager.RemoveObject(unit)
-    if (GetPlayerId(unit.Player) == EnemyIndex) then
+    if (unit.Player.Id == EnemyIndex) then
         DestroyEnemyObject(unit, false)
     else
         DestroyPlayerObject(unit, false)
@@ -120,7 +120,7 @@ function AssetsManager.RemoveObject(unit)
 end
 
 function AssetsManager.DestroyObject(unit)
-    if (GetPlayerId(unit.Player) == EnemyIndex) then
+    if (unit.Player.Id == EnemyIndex) then
         DestroyEnemyObject(unit, true)
     else
         DestroyPlayerObject(unit, true)

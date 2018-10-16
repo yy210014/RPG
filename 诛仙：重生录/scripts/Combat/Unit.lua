@@ -52,7 +52,7 @@ function Unit:New(entity)
 end
 
 function Unit:CreateDummy(modelName, x, y)
-    local unit = CreateUnit(self.Player, GetId("uq00"), x, y, self:Facing())
+    local unit = CreateUnit(self.Player.Entity, GetId("uq00"), x, y, self:Facing())
     if (unit == nil) then
         Game.LogError("单位为null")
         return nil

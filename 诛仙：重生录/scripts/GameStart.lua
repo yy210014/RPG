@@ -5,6 +5,10 @@ GameStart = {}
 
 --游戏开始
 function GameStart.OnGameStart()
+    for i = 0, 12 do
+        PlayerInfo:New(Player(i))
+    end
+    PlayerInfo:New(Player(PLAYER_NEUTRAL_PASSIVE))
     --禁用黑色阴影（开全图）
     FogMaskEnable(false)
     --禁用战争迷雾
@@ -24,11 +28,13 @@ function GameStart.AnyUnitSelected(trig)
     if (unit == nil) then
         return
     end
-    if (IsUnitType(unit.Entity, UNIT_TYPE_HERO) and GetOwningPlayer(unit.Entity) == Player(FirendIndex)) then
+
+    Game.Log(unit.Player.Id)
+    if (IsUnitType(unit.Entity, UNIT_TYPE_HERO) and unit.Player.Id == FirendIndex) then
         if (GameScene.Elapsed - mLastSelectedTime < 0.2) then
             unit:SetUnitOwner(GetTriggerPlayer())
             SetUnitPositionLoc(unit.Entity, JumpPoint.Home)
-            PanCameraToTimedLocForPlayer(unit.Player, JumpPoint.Home, 0)
+            PanCameraToTimedLocForPlayer(unit.Player.Entity, JumpPoint.Home, 0)
             DestroyTrigger(trig)
         end
         mLastSelectedTime = GameScene.Elapsed
@@ -212,8 +218,8 @@ function GameStart.AnyUnitDeath()
     if (dieUnit.InitPoint ~= nil) then
     end
     AssetsManager.RemoveObject(dieUnit)
-    if (killUnit.Player ~= nil) then
-        PlayerInfo:Kill(killUnit.Player)
+    if (killunit.Player.ID ~= EnemyIndex) then
+        PlayerInfo:Kill(killunit.Player)
     end
 end
 

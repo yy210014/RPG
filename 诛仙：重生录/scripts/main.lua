@@ -31,17 +31,17 @@ function main()
         end
     )
 
-    trig = CreateTrigger()
     for i = 0, PlayerCount do
+        trig = CreateTrigger()
         TriggerRegisterPlayerUnitEvent(trig, Player(i), EVENT_PLAYER_UNIT_SELECTED, null)
+        TriggerAddAction(
+            trig,
+            function()
+                GameStart.AnyUnitSelected(trig)
+            end
+        )
     end
-    TriggerAddAction(
-        trig,
-        function()
-            GameStart.AnyUnitSelected(trig)
-        end
-    )
-    
+
     trig = CreateTrigger()
     for i = 0, PlayerCount do
         TriggerRegisterPlayerUnitEvent(trig, Player(i), EVENT_PLAYER_UNIT_ATTACKED, null)
