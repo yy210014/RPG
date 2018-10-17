@@ -25,7 +25,7 @@ end
 function AssetsManager.LoadUnit(player, id, x, y)
     local entity = CreateUnit(player, GetId(id), x, y, mDefUnitFacing)
     local unit = Unit:New(entity)
-    if (unit.Player.Id== EnemyIndex) then
+    if (unit.Player.Id == EnemyIndex) then
         mEnemyTeamUnits[unit.Entity] = unit
     else
         mPlayerTeamUnits[unit.Entity] = unit

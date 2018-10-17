@@ -55,6 +55,10 @@ sound gg_snd_tr_w2=null
 sound gg_snd_tr_w0=null
 sound gg_snd_MouseClick1=null
 trigger gg_trg_______u=null
+rect gg_rct_LianGong1=null
+rect gg_rct_LianGong2=null
+rect gg_rct_LianGong3=null
+rect gg_rct_LianGong4=null
 
 trigger l__library_init
 
@@ -75,7 +79,7 @@ function cj_true_a497bnsor7 takes nothing returns boolean
 //# optional
 return true
 endfunction
-function cjLibw560nbs9b8nse46703948__init takes nothing returns nothing
+function cjLibw560nbs9b8nse46703948___init takes nothing returns nothing
 set cj_true_bool_4896bnao87=Condition(function cj_true_a497bnsor7)
 endfunction
 
@@ -396,6 +400,10 @@ set gg_rct_Jump_32=Rect(4544.0, 9184.0, 5344.0, 9504.0)
 set gg_rct_Jump_33=Rect(7616.0, 9024.0, 8480.0, 9408.0)
 set gg_rct_Jump_34=Rect(4032.0, 4672.0, 4544.0, 5056.0)
 set gg_rct_Jump_35=Rect(- 608.0, - 12064.0, - 192.0, - 11840.0)
+set gg_rct_LianGong1=Rect(864.0, - 9664.0, 3296.0, - 8224.0)
+set gg_rct_LianGong2=Rect(864.0, - 6912.0, 3296.0, - 5472.0)
+set gg_rct_LianGong3=Rect(896.0, - 4256.0, 3328.0, - 2816.0)
+set gg_rct_LianGong4=Rect(896.0, - 1728.0, 3328.0, - 288.0)
 endfunction
 function Trig_______uActions takes nothing returns nothing
 call FogEnable(false)
@@ -559,7 +567,7 @@ call CreateRegions()
 call CreateAllUnits()
 call InitBlizzard()
 
-call ExecuteFunc("cjLibw560nbs9b8nse46703948__init")
+call ExecuteFunc("cjLibw560nbs9b8nse46703948___init")
 
 call InitGlobals()
 call InitTrig_______u() // INLINED!!

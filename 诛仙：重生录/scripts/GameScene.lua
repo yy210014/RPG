@@ -1,6 +1,6 @@
 require "scripts.Combat.PlayerInfo"
 require "scripts.AssetsManager"
---require "scripts.MonsterRefresh"
+require "scripts.MonsterRefresh"
 require "scripts.Multiboard"
 require "scripts.Combat.Unit"
 require "scripts.Combat.Attribute"
@@ -8,7 +8,7 @@ require "scripts.Combat.Buffs.InitBuff"
 require "scripts.Combat.Items.InitItem"
 require "scripts.Combat.Skills.InitSkill"
 require "scripts.Combat.Locomotions.InitLocomotion"
-local Jglobals = require "jass.globals"
+Jglobals = require "jass.globals"
 
 GameScene = {}
 Worke = _array_()
@@ -56,7 +56,8 @@ JumpPoint = {
 
 local function InitPlayer()
     for i = 0, PlayerInfo:GetPlayerCount() - 1 do
-        SetPlayerState(Player(i), PLAYER_STATE_RESOURCE_GOLD, 2000)
+        SetPlayerState(Player(i), PLAYER_STATE_RESOURCE_GOLD, 100000)
+        SetPlayerState(Player(i), PLAYER_STATE_RESOURCE_LUMBER, 100000)
         SetPlayerState(Player(i), PLAYER_STATE_FOOD_CAP_CEILING, FOOD_MAX)
         --修改了人口上限
         SetPlayerState(Player(i), PLAYER_STATE_RESOURCE_FOOD_CAP, FOOD_MAX)
@@ -105,7 +106,7 @@ function GameScene.OnGameStart()
     InitAllUnit()
     InitItem()
     Multiboard.CreateMultiboard()
-    -- MonsterRefresh.OnGameStart()
+    MonsterRefresh.OnGameStart()
     --Game.Log(os.date("%c"))
     --Game.Log(os.time())
 end

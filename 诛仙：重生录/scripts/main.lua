@@ -81,6 +81,7 @@ function main()
         TriggerRegisterPlayerUnitEvent(trig, Player(i), EVENT_PLAYER_UNIT_DEATH, null)
     end
     TriggerRegisterPlayerUnitEvent(trig, Player(EnemyIndex), EVENT_PLAYER_UNIT_DEATH, null)
+    TriggerRegisterPlayerUnitEvent(trig, Player(PLAYER_NEUTRAL_AGGRESSIVE), EVENT_PLAYER_UNIT_DEATH, null)
     TriggerAddAction(
         trig,
         function()

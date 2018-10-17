@@ -33,6 +33,8 @@ function GameStart.AnyUnitSelected(trig)
         if (GameScene.Elapsed - mLastSelectedTime < 0.4) then
             unit:SetUnitOwner(GetTriggerPlayer())
             unit.Player.Hero = unit
+            unit.Attribute:add("物理攻击加成", 1000000)
+            unit.Attribute:add("护甲", 10000)
             SetUnitPositionLoc(unit.Entity, JumpPoint.Home)
             PanCameraToTimedLocForPlayer(unit.Player.Entity, JumpPoint.Home, 0)
             DestroyTrigger(trig)
@@ -190,9 +192,6 @@ function GameStart.AnyUnitDeath()
     if (killUnit == nil or dieUnit == nil) then
         if dieUnit ~= nil and GetUnitAbilityLevel(dieUnit.Entity, GetId("Aloc")) > 0 then
             --马甲死亡,马甲死亡是没有凶手单位的
-            if GetUnitTypeId(dieUnit.Entity) ~= GetId("uq05") then --地雷特殊处理
-                AssetsManager.RemoveObject(dieUnit)
-            end
         end
         return
     end
@@ -217,10 +216,13 @@ function GameStart.AnyUnitDeath()
     --死亡单位是野怪
     if (dieUnit.InitPoint ~= nil) then
     end
-    AssetsManager.RemoveObject(dieUnit)
     if (killUnit.Player.Id ~= PLAYER_NEUTRAL_AGGRESSIVE and killUnit.Player.Id ~= EnemyIndex) then
         PlayerInfo:Kill(killUnit.Player)
     end
+
+    --额外事件推送
+    GameEventProc.SendEvent("任意单位死亡", killUnit, dieUnit)
+    AssetsManager.RemoveObject(dieUnit)
 end
 
 --任意单位提升等级
@@ -234,7 +236,7 @@ function GameStart.AnyHeroLevelUp()
     --迭代物品
     unit:IterateItems(
         function(item)
-            Item:OnUpgrade()
+            item:OnUpgrade()
             item:OnRefresh()
         end
     )
@@ -316,12 +318,19 @@ function GameStart.AnyUnitPickUpItem()
 
     --传送道具功能
     if (item.JumpPoints ~= nil) then
-        unit:SetPosition(GetLocationX(item.JumpPoints[unit.Player.Id + 1]), GetLocationY(item.JumpPoints[unit.Player.Id + 1]))
+        unit:SetPosition(
+            GetLocationX(item.JumpPoints[unit.Player.Id + 1]),
+            GetLocationY(item.JumpPoints[unit.Player.Id + 1])
+        )
         PanCameraToTimedLocForPlayer(unit.Player.Entity, item.JumpPoints[unit.Player.Id + 1], 0)
     end
     if (item.JumpPoint ~= nil) then
         unit:SetPosition(GetLocationX(item.JumpPoint), GetLocationY(item.JumpPoint))
         PanCameraToTimedLocForPlayer(unit.Player.Entity, item.JumpPoint, 0)
+    end
+    --练功房
+    if (item.LianGongUnitId ~= nil) then
+        MonsterRefresh:LianGongRefresh(unit, unit.Player.Id, item.LianGongUnitId)
     end
     --Game.Log("任意单位获得物品:" .. item.Name)
 end

@@ -22,11 +22,7 @@ function PlayerInfo:New(player)
     return newPlayer
 end
 
-function PlayerInfo:Kill(playerIndex)
-    if (self:Player(playerIndex) == nil) then
-        Game.LogError("错误的玩家")
-    end
-    local player = self:Player(playerIndex)
+function PlayerInfo:Kill(player)
     player.KillCount = player.KillCount + 1
     GameEventProc.SendEvent("杀敌显示", player.Id + 1, player.KillCount)
 end

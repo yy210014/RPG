@@ -1,16 +1,84 @@
 MonsterRefresh = {}
+MonsterRefresh.LianGongs = {}
+LianGong = {}
+local mEnemyPlayer = nil
 
+function LianGong:Clear()
+    if (self.Monsters == nil) then
+        return
+    end
+    for k, v in pairs(self.Monsters) do
+        AssetsManager.DestroyObject(v)
+    end
+    self.Monsters = nil
+end
 
-function MonsterRefresh.LianGongRefresh(unitid, point)
-    local newUnit = null
+function LianGong:Refresh(unitid)
+    self:Clear()
+    local unit = nil
+    self.Monsters = {}
+    self.MonsterCount = 20
     for i = 0, 4 do
         for j = 0, 3 do
-            local x = GetRectCenterX(whichRect)
-            local y = GetRectCenterY(whichRect)
-            local offX = -200.00 + 100.00 * I2R(bj_forLoopAIndex)
-            local offY = -200.00 + 100.00 * I2R(bj_forLoopBIndex)
+            local x = GetRectCenterX(self.Rect)
+            local y = GetRectCenterY(self.Rect)
+            local offX = -200 + 100 * i
+            local offY = -200 + 100 * j
+            unit = AssetsManager.LoadUnit(mEnemyPlayer.Entity, unitid, x + offX, y + offY)
+            self.Monsters[unit] = unit
         end
     end
+end
+
+function LianGong:UnitDeath(unit)
+    self.Monsters[unit] = nil
+    self.MonsterCount = self.MonsterCount - 1
+    if (self.MonsterCount <= 0) then
+        self:Refresh(ID2Str(unit.Id))
+    end
+end
+
+function MonsterRefresh.InitLianGong()
+    mEnemyPlayer = PlayerInfo:Player(PLAYER_NEUTRAL_AGGRESSIVE)
+    for i = 1, PlayerInfo:GetPlayerCount() do
+        MonsterRefresh.LianGongs[i] = setmetatable({}, {__index = LianGong})
+        MonsterRefresh.LianGongs[i].Action = function(attactUnit, defUnit)
+            MonsterRefresh.LianGongs[i]:UnitDeath(defUnit)
+        end
+    end
+    MonsterRefresh.LianGongs[1].Rect = Jglobals.gg_rct_LianGong1
+    MonsterRefresh.LianGongs[1].Region = CreateRegion()
+    RegionAddRect(MonsterRefresh.LianGongs[1].Region, Jglobals.gg_rct_LianGong1)
+    MonsterRefresh.LianGongs[2].Rect = Jglobals.gg_rct_LianGong2
+    MonsterRefresh.LianGongs[2].Region = CreateRegion()
+    RegionAddRect(MonsterRefresh.LianGongs[2].Region, Jglobals.gg_rct_LianGong2)
+    MonsterRefresh.LianGongs[3].Rect = Jglobals.gg_rct_LianGong3
+    MonsterRefresh.LianGongs[3].Region = CreateRegion()
+    RegionAddRect(MonsterRefresh.LianGongs[3].Region, Jglobals.gg_rct_LianGong3)
+    MonsterRefresh.LianGongs[4].Rect = Jglobals.gg_rct_LianGong4
+    MonsterRefresh.LianGongs[4].Region = CreateRegion()
+    RegionAddRect(MonsterRefresh.LianGongs[4].Region, Jglobals.gg_rct_LianGong4)
+end
+
+function MonsterRefresh:LianGongRefresh(enteringUnit, playerId, unitid)
+    self.LianGongs[playerId + 1]:Refresh(unitid)
+    if (self.LianGongs[playerId + 1].Trigger ~= nil) then
+        return
+    end
+    self.LianGongs[playerId + 1].Trigger = CreateTrigger()
+    TriggerRegisterLeaveRectSimple(self.LianGongs[playerId + 1].Trigger, self.LianGongs[playerId + 1].Rect)
+    GameEventProc.RegisterEventHandler("任意单位死亡", self.LianGongs[playerId + 1].Action)
+    TriggerAddAction(
+        self.LianGongs[playerId + 1].Trigger,
+        function()
+            if (GetLeavingUnit() == enteringUnit.Entity) then
+                self.LianGongs[playerId + 1]:Clear()
+                GameEventProc.UnregisterEventHandler("任意单位死亡", self.LianGongs[playerId + 1].Action)
+                DestroyTrigger(self.LianGongs[playerId + 1].Trigger)
+                self.LianGongs[playerId + 1].Trigger = nil
+            end
+        end
+    )
 end
 
 --当前波数
@@ -79,7 +147,8 @@ local function DelayPush()
 end
 
 function MonsterRefresh.OnGameStart()
-    DelayPush()
+    MonsterRefresh.InitLianGong()
+    --DelayPush()
 end
 
 function PushWave()
@@ -100,12 +169,10 @@ function AllWavesDie()
     -- body
 end
 
-
 function MonsterRefresh.OnGameUpdate(dt)
     --	mRunTime = mRunTime + dt
     --	mTimeDt1 = mTimeDt1 + dt
     --	local t1 = time_of_space[mCurWaveIndex] --每波兵出现倒计时时间
-
     if (mSpawnEnable) then
         mTimeDt2 = mTimeDt2 + dt
         local t2 = time_of_show[mCurWaveIndex] --每波兵出兵持续时间
