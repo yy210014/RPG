@@ -1,6 +1,16 @@
+local JumpEffect = "Abilities\\Spells\\Human\\MassTeleport\\MassTeleportTarget.mdl"
+
+function BackHome(player)
+    if (player.Hero ~= nil) then
+        player.Hero:SetPosition(GetLocationX(JumpPoint.Home), GetLocationY(JumpPoint.Home))
+        PanCameraToTimedLocForPlayer(player.Entity, JumpPoint.Home, 0)
+        DestroyEffect(AddSpecialEffect(JumpEffect, player.Hero:X(), player.Hero:Y()))
+    end
+end
+
 --镜头+
-function AddCameraFieldForPlayer()
-    local player = GetTriggerPlayer()
+function AddCameraFieldForPlayer(player)
+    local player = player.Entity
     local nowCameraField = GetCameraTargetPositionZ()
     nowCameraField = nowCameraField + 100
     if (nowCameraField > 600) then
@@ -10,8 +20,8 @@ function AddCameraFieldForPlayer()
 end
 
 --镜头-
-function MinusCameraFieldForPlayer()
-    local player = GetTriggerPlayer()
+function MinusCameraFieldForPlayer(player)
+    local player = player.Entity
     local nowCameraField = GetCameraTargetPositionZ()
     nowCameraField = nowCameraField - 50
     if (nowCameraField < 150) then

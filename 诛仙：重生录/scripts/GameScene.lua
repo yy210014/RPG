@@ -103,6 +103,7 @@ end
 function GameScene.OnGameStart()
     InitPlayer()
     InitAllUnit()
+    InitItem()
     Multiboard.CreateMultiboard()
     -- MonsterRefresh.OnGameStart()
     --Game.Log(os.date("%c"))

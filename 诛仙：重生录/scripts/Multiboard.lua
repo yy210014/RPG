@@ -15,9 +15,10 @@ function Multiboard.CreateMultiboard()
     MultiboardSetItemsWidth(mMultiboard, 0.03)
     MultiboardSetItemValue(MultiboardGetItem(mMultiboard, 0, 0), "|cffFF6633玩家：|r")
     MultiboardSetItemValue(MultiboardGetItem(mMultiboard, 0, 1), "|cffFF6633杀敌数：|r")
-    MultiboardSetItemValue(MultiboardGetItem(mMultiboard, 0, 2), "XX")
-    MultiboardSetItemValue(MultiboardGetItem(mMultiboard, 0, 3), "XX")
-    MultiboardSetItemValue(MultiboardGetItem(mMultiboard, 0, 4), "XX")
+    MultiboardSetItemValue(MultiboardGetItem(mMultiboard, 0, 2), "|cffFF6633悟性：|r")
+    MultiboardSetItemValue(MultiboardGetItem(mMultiboard, 0, 3), "|cffFF6633威望值：|r")
+    MultiboardSetItemValue(MultiboardGetItem(mMultiboard, 0, 4), "|cffFF6633天梯点：|r")
+    MultiboardSetItemValue(MultiboardGetItem(mMultiboard, 0, 5), "|cffFF6633修行境界：|r")
     MultiboardSetItemsStyle(mMultiboard, true, false)
     MultiboardDisplay(mMultiboard, true)
 
@@ -31,6 +32,30 @@ function Multiboard.CreateMultiboard()
         "杀敌显示",
         function(i, killCount)
             MultiboardSetItemValue(MultiboardGetItem(mMultiboard, i, 1), killCount)
+        end
+    )
+    GameEventProc.RegisterEventHandler(
+        "悟性",
+        function(i, value)
+            MultiboardSetItemValue(MultiboardGetItem(mMultiboard, i, 2), value)
+        end
+    )
+    GameEventProc.RegisterEventHandler(
+        "威望值",
+        function(i, value)
+            MultiboardSetItemValue(MultiboardGetItem(mMultiboard, i, 3), value)
+        end
+    )
+    GameEventProc.RegisterEventHandler(
+        "修行境界",
+        function(i, value)
+            MultiboardSetItemValue(MultiboardGetItem(mMultiboard, i, 4), value)
+        end
+    )
+    GameEventProc.RegisterEventHandler(
+        "杀敌显示",
+        function(i, value)
+            MultiboardSetItemValue(MultiboardGetItem(mMultiboard, i, 5), value)
         end
     )
 end

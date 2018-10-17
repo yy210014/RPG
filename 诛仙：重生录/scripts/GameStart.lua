@@ -32,6 +32,7 @@ function GameStart.AnyUnitSelected(trig)
     if (IsUnitType(unit.Entity, UNIT_TYPE_HERO) and unit.Player.Id == FirendIndex) then
         if (GameScene.Elapsed - mLastSelectedTime < 0.4) then
             unit:SetUnitOwner(GetTriggerPlayer())
+            unit.Player.Hero = unit
             SetUnitPositionLoc(unit.Entity, JumpPoint.Home)
             PanCameraToTimedLocForPlayer(unit.Player.Entity, JumpPoint.Home, 0)
             DestroyTrigger(trig)
@@ -257,7 +258,7 @@ function GameStart.AnyUnitSpellChannel()
     if (spellUnit == nil) then
         return
     end
-    
+
     local skill = spellUnit.Skills[abilityId]
     if (skill ~= nil) then
         skill:OnSpellChannel()
@@ -304,7 +305,7 @@ function GameStart.AnyUnitPickUpItem()
         Game.LogError("任意单位获得物品-丢失单位")
         return
     end
-    unit:AddItem(item)
+    local item = unit:AddItem(GetManipulatedItem())
 
     --刷新所有道具
     unit:IterateItems(
@@ -312,6 +313,17 @@ function GameStart.AnyUnitPickUpItem()
             item:OnRefresh()
         end
     )
+
+    --传送道具功能
+    if (item.JumpPoints ~= nil) then
+        unit:SetPosition(GetLocationX(item.JumpPoints[unit.Player.Id + 1]), GetLocationY(item.JumpPoints[unit.Player.Id + 1]))
+        PanCameraToTimedLocForPlayer(unit.Player.Entity, item.JumpPoints[unit.Player.Id + 1], 0)
+    end
+    if (item.JumpPoint ~= nil) then
+        unit:SetPosition(GetLocationX(item.JumpPoint), GetLocationY(item.JumpPoint))
+        PanCameraToTimedLocForPlayer(unit.Player.Entity, item.JumpPoint, 0)
+    end
+    --Game.Log("任意单位获得物品:" .. item.Name)
 end
 
 --任意单位使用物品
@@ -322,6 +334,7 @@ function GameStart.AnyUnitUseItem()
         return
     end
     local item = unit.Items[GetManipulatedItem()]
+    --Game.Log("任意单位使用物品:" .. item.Name)
     item:OnUse()
 end
 
@@ -350,6 +363,7 @@ function GameStart.AnyUnitDropItem()
         Game.LogError("任意单位丢弃物品-丢失单位")
         return
     end
+    --Game.Log("任意单位丢弃物品")
     --local item = unit.Items[GetManipulatedItem()]
     unit:RemoveItem(GetManipulatedItem())
 
@@ -363,6 +377,7 @@ end
 
 --任意玩家输入字符串
 function GameStart.AnyPlayerChat()
+    local player = PlayerInfo:Player(GetPlayerId(GetTriggerPlayer()))
     local str = string.lower(GetEventPlayerChatString())
     if (str == "cheat") then
         cheat()
@@ -379,11 +394,15 @@ function GameStart.AnyPlayerChat()
         end
     end
 
+    if (str == "hg") then
+        BackHome(player)
+    end
+
     if (str == "++") then
-        AddCameraFieldForPlayer()
+        AddCameraFieldForPlayer(player)
     end
 
     if (str == "--") then
-        MinusCameraFieldForPlayer()
+        MinusCameraFieldForPlayer(player)
     end
 end
