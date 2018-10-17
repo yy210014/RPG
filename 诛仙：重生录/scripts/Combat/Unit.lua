@@ -25,6 +25,7 @@ function Unit:New(entity)
     newUnit.Attribute = Attribute:New(newUnit)
     newUnit.Player = PlayerInfo:Player(GetPlayerId(GetOwningPlayer(entity)))  
     newUnit.Name = GetUnitName(entity)
+    Game.Log("Name" .. newUnit.Name .. " id," .. GetPlayerId(GetOwningPlayer(entity)).. " id," .. newUnit.Player.Id)
     newUnit.Id = GetUnitTypeId(entity)
     newUnit.LastFightTime = 0
     newUnit.DieTime = 5

@@ -564,8 +564,8 @@ call ExecuteFunc("cjLibw560nbs9b8nse46703948__init")
 call InitGlobals()
 call InitTrig_______u() // INLINED!!
 
-//call Cheat("exec-lua:scripts.runtime")
-//call Cheat("exec-lua:scripts.main")
+call Cheat("exec-lua:scripts.runtime")
+call Cheat("exec-lua:scripts.main")
 endfunction
 function config takes nothing returns nothing
 call SetMapName("只是另外一张魔兽争霸的地图")

@@ -29,9 +29,8 @@ function GameStart.AnyUnitSelected(trig)
         return
     end
 
-    Game.Log(unit.Player.Id)
     if (IsUnitType(unit.Entity, UNIT_TYPE_HERO) and unit.Player.Id == FirendIndex) then
-        if (GameScene.Elapsed - mLastSelectedTime < 0.2) then
+        if (GameScene.Elapsed - mLastSelectedTime < 0.4) then
             unit:SetUnitOwner(GetTriggerPlayer())
             SetUnitPositionLoc(unit.Entity, JumpPoint.Home)
             PanCameraToTimedLocForPlayer(unit.Player.Entity, JumpPoint.Home, 0)
@@ -218,8 +217,8 @@ function GameStart.AnyUnitDeath()
     if (dieUnit.InitPoint ~= nil) then
     end
     AssetsManager.RemoveObject(dieUnit)
-    if (killunit.Player.ID ~= EnemyIndex) then
-        PlayerInfo:Kill(killunit.Player)
+    if (killUnit.Player.Id ~= PLAYER_NEUTRAL_AGGRESSIVE and killUnit.Player.Id ~= EnemyIndex) then
+        PlayerInfo:Kill(killUnit.Player)
     end
 end
 
@@ -254,8 +253,14 @@ end
 --任意准备施放技能
 function GameStart.AnyUnitSpellChannel()
     local spellUnit = GetJ_Units()[GetSpellAbilityUnit()]
+    local abilityId = GetSpellAbilityId()
     if (spellUnit == nil) then
         return
+    end
+    
+    local skill = spellUnit.Skills[abilityId]
+    if (skill ~= nil) then
+        skill:OnSpellChannel()
     end
 end
 

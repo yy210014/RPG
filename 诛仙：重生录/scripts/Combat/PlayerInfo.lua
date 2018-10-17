@@ -18,23 +18,21 @@ function PlayerInfo:New(player)
     local newPlayer = mt:New(player)
     newPlayer.KillCount = 0
     mPlayers[newPlayer.Id + 1] = newPlayer
-    Game.Log("New" .. newPlayer.Id .. "," .. "Count" .. #mPlayers)
     GameEventProc.SendEvent("玩家显示", newPlayer.Id + 1, newPlayer.Name)
     return newPlayer
 end
 
 function PlayerInfo:Kill(playerIndex)
-    if (mPlayers[playerIndex] == nil) then
+    if (self:Player(playerIndex) == nil) then
         Game.LogError("错误的玩家")
     end
-    local player = mPlayers[playerIndex]
+    local player = self:Player(playerIndex)
     player.KillCount = player.KillCount + 1
     GameEventProc.SendEvent("杀敌显示", player.Id + 1, player.KillCount)
 end
 
 function PlayerInfo:Player(id)
-    Game.Log("Count" .. #mPlayers .. " ," .. id)
-    return mPlayers[id]
+    return mPlayers[id+1]
 end
 
 function PlayerInfo:GetPlayerCount()
