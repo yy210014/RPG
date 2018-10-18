@@ -1,4 +1,5 @@
 MonsterRefresh = {}
+--MonsterRefresh.Point = {Jglobals.gg_rct_ChuGuaiKou_1, Jglobals.gg_rct_ChuGuaiKou_2, Jglobals.gg_rct_ChuGuaiKou_Boss}
 MonsterRefresh.LianGongs = {}
 LianGong = {}
 local mEnemyPlayer = nil
@@ -58,6 +59,17 @@ function MonsterRefresh.InitLianGong()
     MonsterRefresh.LianGongs[4].Rect = Jglobals.gg_rct_LianGong4
     MonsterRefresh.LianGongs[4].Region = CreateRegion()
     RegionAddRect(MonsterRefresh.LianGongs[4].Region, Jglobals.gg_rct_LianGong4)
+
+    --ui
+    DzFrameSetScriptByCode(
+        Jglobals.udg_Frame[1],
+        CFrameEvents.FRAME_EVENT_PRESSED,
+        function()
+            Game.Log("点击ui")
+            BackHome(PlayerInfo:Player(GetPlayerId(DzGetTriggerUIEventPlayer())))
+        end,
+        true
+    )
 end
 
 function MonsterRefresh:LianGongRefresh(enteringUnit, playerId, unitid)
@@ -170,9 +182,7 @@ function AllWavesDie()
 end
 
 function MonsterRefresh.OnGameUpdate(dt)
-    --	mRunTime = mRunTime + dt
-    --	mTimeDt1 = mTimeDt1 + dt
-    --	local t1 = time_of_space[mCurWaveIndex] --每波兵出现倒计时时间
+
     if (mSpawnEnable) then
         mTimeDt2 = mTimeDt2 + dt
         local t2 = time_of_show[mCurWaveIndex] --每波兵出兵持续时间
@@ -202,3 +212,19 @@ function MonsterRefresh.OnGameUpdate(dt)
         end
     end
 end
+
+--[[
+进攻BOSS与变异怪功能
+
+1.10、20、30波 出BOSS，3分钟一波
+2.在20波之后进攻怪中会随机出现5-10只变异的怪，获得以下随机技能之一，颜色变为蓝色。出现变异怪的时候，会有系统提示，并且提示这个变异怪拥有的技能
+获得技能有：
+会心一击：5倍伤害倍击，倍击几率20%
+攻速提高：+100%攻速
+加强攻击：+100%攻击
+巨石之力：攻击有5%几率眩晕目标1秒
+强化生命：跟波数有关：2W生命值*当前波数
+强化装甲：跟波数有关：100*当前波数
+闪避：自带30%闪避
+反伤护甲：近战全额反伤
+无敌：无敌2秒，CD20秒]]

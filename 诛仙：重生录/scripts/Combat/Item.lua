@@ -107,6 +107,16 @@ function Item:SetIcon(art)
     EXSetItemDataString(self.Id, ITEM_DATA_ART, art)
 end
 
+function Item:GetCharges(value)
+    return self.Charges
+end
+
+function Item:SetCharges(value)
+    self.Charges = value
+    SetItemCharges(self.Entity, value)
+end
+
+
 Items =
     setmetatable(
     {},

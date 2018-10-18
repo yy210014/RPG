@@ -275,16 +275,16 @@ function GameStart.AnyUnitSpellEffect()
         Game.LogError("任意单位发动技能效果-丢失单位")
         return
     end
-    --迭代物品
-    spellUnit:IterateItems(
-        function(item)
-            item:OnCast()
-        end
-    )
 
     local skill = spellUnit.Skills[abilityId]
     if (skill ~= nil) then
         skill:OnSpell()
+        --迭代物品
+        spellUnit:IterateItems(
+            function(item)
+                item:OnCast()
+            end
+        )
     end
 end
 
