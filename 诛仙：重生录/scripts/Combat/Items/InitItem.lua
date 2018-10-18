@@ -1,7 +1,7 @@
 require "scripts.Combat.Item"
 
 function InitItem()
-    Items["进入练功房"].JumpPoints = { JumpPoint.LianGong1, JumpPoint.LianGong2, JumpPoint.LianGong3, JumpPoint.LianGong4 }
+    Items["进入练功房"].JumpPoints = {JumpPoint.LianGong1, JumpPoint.LianGong2, JumpPoint.LianGong3, JumpPoint.LianGong4}
     Items["狂狼巢穴"].JumpPoint = JumpPoint.KuangLang
     Items["青衣冢"].JumpPoint = JumpPoint.QingYi
     Items["火岩洞穴"].JumpPoint = JumpPoint.HuoYan
@@ -40,4 +40,29 @@ function InitItem()
     Items["高级修为怪"].LianGongUnitId = "u005"
     Items["宝石怪"].LianGongUnitId = "u006"
     Items["上古神石怪"].LianGongUnitId = "u007"
+end
+
+local item = Items["领取野外击杀鱼怪任务"]
+function item:OnAdd()
+    GameEventProc.SendEvent("领取野外击杀鱼怪任务", 1)
+end
+item = Items["领取野外击杀蜘蛛任务"]
+function item:OnAdd()
+    GameEventProc.SendEvent("领取野外击杀蜘蛛任务", 2)
+end
+item = Items["领取野外击杀强盗任务"]
+function item:OnAdd()
+    GameEventProc.SendEvent("领取野外击杀强盗任务", 3)
+end
+item = Items["领取野外击杀疯狼任务"]
+function item:OnAdd()
+    GameEventProc.SendEvent("领取野外击杀疯狼任务", 4)
+end
+item = Items["领取野外击杀狂熊任务"]
+function item:OnAdd()
+    GameEventProc.SendEvent("领取野外击杀狂熊任务", 5)
+end
+item = Items["领取野外击杀妖魂任务"]
+function item:OnAdd()
+    GameEventProc.SendEvent("领取野外击杀妖魂任务", 6)
 end

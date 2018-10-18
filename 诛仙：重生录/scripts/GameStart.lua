@@ -33,7 +33,7 @@ function GameStart.AnyUnitSelected(trig)
         if (GameScene.Elapsed - mLastSelectedTime < 0.4) then
             unit:SetUnitOwner(GetTriggerPlayer())
             unit.Player.Hero = unit
-            unit.Attribute:add("物理攻击加成", 1000000)
+            unit.Attribute:add("物理攻击加成", 1000000000)
             unit.Attribute:add("护甲", 10000)
             SetUnitPositionLoc(unit.Entity, JumpPoint.Home)
             PanCameraToTimedLocForPlayer(unit.Player.Entity, JumpPoint.Home, 0)
