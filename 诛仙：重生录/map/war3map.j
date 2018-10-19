@@ -698,6 +698,10 @@ call SetStartLocPrio(5, 3, 3, MAP_LOC_PRIO_HIGH)
 call SetStartLocPrio(5, 4, 4, MAP_LOC_PRIO_HIGH)
 endfunction
 
+function BackHome takes nothing returns nothing
+      call  PanCameraToTimedLocForPlayer(DzGetTriggerUIEventPlayer(), GetRectCenter(gg_rct_Jump_22), 0)
+endfunction
+
 function InitUi takes nothing returns nothing
     set udg_Frame[1] = DzCreateFrameByTagName("GLUETEXTBUTTON", "回城", DzGetGameUI(), "template", 0)
     call DzFrameSetSize( udg_Frame[1], 0.03, 0.03 )
@@ -708,6 +712,7 @@ function InitUi takes nothing returns nothing
     call DzFrameSetSize( udg_Frame[2], 0.03, 0.03 )
     call DzFrameSetPoint( udg_Frame[2], 3, DzGetGameUI(), 3, 0.20, -0.15 )
     call DzFrameShow( udg_Frame[2], true )
+    call DzFrameSetScriptByCode( udg_Frame[1], 1,function BackHome, false )
 endfunction
 
 function main takes nothing returns nothing

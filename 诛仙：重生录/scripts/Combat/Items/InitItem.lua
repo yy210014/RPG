@@ -1,4 +1,7 @@
 require "scripts.Combat.Item"
+require "scripts.Combat.Items.ItemWeapon"
+require "scripts.Combat.Items.ItemArmor"
+require "scripts.Combat.Items.ItemHelmet"
 
 function InitItem()
     Items["进入练功房"].JumpPoints = {JumpPoint.LianGong1, JumpPoint.LianGong2, JumpPoint.LianGong3, JumpPoint.LianGong4}

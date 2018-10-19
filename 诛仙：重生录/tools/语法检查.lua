@@ -35,7 +35,7 @@ local watch = arg[2] == '--watch'
 if not watch then
     local res, succeed, failed = compilation(script)
     print(res)
-    print(string.format('成功 %d 个, 失败 %d 个', succeed, failed))
+    print(string.format('Succeed %d , Failure %d ', succeed, failed))
     return
 end
 

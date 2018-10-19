@@ -261,7 +261,7 @@ function Unit:OnGameUpdate(dt)
     if (self.Texts ~= nil and #self.Texts > 0) then
         self.TextDt = self.TextDt - dt
         if (self.TextDt <= 0) then
-            self.TextDt = 0.06
+            self.TextDt = 0.01
             local text = self.Texts[#self.Texts]
             CreateDamageText(text[1], self.Entity, text[2], text[3])
             self.Texts[#self.Texts] = nil

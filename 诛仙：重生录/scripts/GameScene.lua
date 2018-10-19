@@ -115,6 +115,6 @@ end
 function GameScene.OnGameUpdate(dt)
     GameScene.Elapsed = GameScene.Elapsed + dt
     AssetsManager.OnGameUpdate(dt)
-    --   MonsterRefresh.OnGameUpdate(dt)
+    MonsterRefresh.OnGameUpdate(dt)
     Multiboard.OnGameUpdate(dt)
 end

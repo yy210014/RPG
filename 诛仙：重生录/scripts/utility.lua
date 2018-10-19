@@ -86,7 +86,7 @@ function CreateDamageText(text, whichUnit, isCritDamage, color)
     SetTextTagVelocity(tt, xvel, yvel)
     SetTextTagPermanent(tt, false)
     SetTextTagLifespan(tt, 0.5)
-    SetTextTagFadepoint(tt, 1)
+    SetTextTagFadepoint(tt, 0.8)
     tt = nil
 end
 

@@ -22,7 +22,8 @@ Attribute.CritDamage = 2
 Attribute.RegenMana = 0
 --移动速度加成
 Attribute.MoveSpeed = 0
-
+--全属性
+Attribute.Attribute = 0
 local attribute = {
     ["物理攻击"] = true, --ad(基础攻击)
     ["物理攻击加成"] = true, --ad加成
@@ -42,7 +43,8 @@ local attribute = {
     ["能量值"] = true,
     ["攻击范围"] = true,
     ["怒气值"] = true,
-    ["护甲"] = true
+    ["护甲"] = true,
+    ["全属性"] = true
 }
 
 local set = {}
@@ -250,4 +252,16 @@ end
 
 set["暴击伤害"] = function(self, value)
     self.CritDamage = Clamp(value, 2, 2.5)
+end
+
+get["全属性"] = function(self)
+    return self.Attribute
+end
+
+set["全属性"] = function(self, value)
+    local hero = self.Owner.Entity
+    self.Attribute = value
+    SetHeroStr(hero, value, true)
+    SetHeroAgi(hero, value, true)
+    SetHeroInt(hero, value, true)
 end
