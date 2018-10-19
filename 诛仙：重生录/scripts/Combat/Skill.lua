@@ -1,4 +1,3 @@
-local slk = require "jass.slk"
 Skill = {}
 Skill.__index = Skill
 
@@ -8,14 +7,14 @@ function Skill:New(owner, id)
     setmetatable(newSkill, { __index = Skills[name] })
     newSkill.Owner = owner
     newSkill.Id = id
-    newSkill.Order = slk.ability[id]["Order"]
-    newSkill.MaxLevel = tonumber(slk.ability[id]["levels"])
+    newSkill.Order = Slk.ability[id]["Order"]
+    newSkill.MaxLevel = tonumber(Slk.ability[id]["levels"])
     for i = 1, newSkill.MaxLevel do
-        table.insert(newSkill.Cools, tonumber(slk.ability[id]["Cool" .. i]))
-        table.insert(newSkill.Rngs, tonumber(slk.ability[id]["Rng" .. i]))
-        table.insert(newSkill.Areas, tonumber(slk.ability[id]["Area" .. i]))
-        table.insert(newSkill.Durs, tonumber(slk.ability[id]["Dur" .. i]))
-        table.insert(newSkill.HeroDurs, tonumber(slk.ability[id]["HeroDur" .. i]))
+        table.insert(newSkill.Cools, tonumber(Slk.ability[id]["Cool" .. i]))
+        table.insert(newSkill.Rngs, tonumber(Slk.ability[id]["Rng" .. i]))
+        table.insert(newSkill.Areas, tonumber(Slk.ability[id]["Area" .. i]))
+        table.insert(newSkill.Durs, tonumber(Slk.ability[id]["Dur" .. i]))
+        table.insert(newSkill.HeroDurs, tonumber(Slk.ability[id]["HeroDur" .. i]))
     end
     newSkill:UpdateCD()
     return newSkill

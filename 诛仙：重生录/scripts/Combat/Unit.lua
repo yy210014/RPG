@@ -86,7 +86,6 @@ end
 function Unit:AddItem(entity)
     local item = Item:New(self, entity)
     self.Items[entity] = item
-    Item.ItemCompound(self.Entity, entity)
     item:OnAdd()
     item:OnRefresh()
     return item

@@ -40,11 +40,11 @@ local attribute = {
     ["生命上限"] = true,
     ["魔法值"] = true,
     ["魔法上限"] = true,
-    ["能量值"] = true,
     ["攻击范围"] = true,
-    ["怒气值"] = true,
     ["护甲"] = true,
-    ["全属性"] = true
+    ["力量"] = true,
+    ["敏捷"] = true,
+    ["智力"] = true
 }
 
 local set = {}
@@ -204,29 +204,6 @@ set["魔法恢复"] = function(self, value)
     self.RegenMana = Clamp(value, 0, value)
 end
 
-get["能量值"] = function(self)
-    return Clamp(GetUnitState(self.Owner.Entity, UNIT_STATE_MANA), 0, 100)
-end
-
-set["能量值"] = function(self, value)
-    if (self.Owner.ManaType ~= 1 or value < 0 or value > 100) then
-        return
-    end
-    SetUnitState(self.Owner.Entity, UNIT_STATE_MANA, Clamp(value, 0, 100))
-end
-
-get["怒气值"] = function(self)
-    return Clamp(GetUnitState(self.Owner.Entity, UNIT_STATE_MANA), 0, 100)
-end
-
-set["怒气值"] = function(self, value)
-    if (self.Owner.ManaType ~= 2 or value < 0 or value > 100) then
-        return
-    end
-    GameEventProc.SendEvent("任意单位怒气值改变", self.Owner, value - get["怒气值"](self))
-    SetUnitState(self.Owner.Entity, UNIT_STATE_MANA, Clamp(value, 0, 100))
-end
-
 get["冷却缩减"] = function(self)
     return Clamp(self.Cooldown, 0, 0.4)
 end
@@ -243,7 +220,6 @@ end
 
 set["暴击"] = function(self, value)
     self.Crit = Clamp(value, 0, 1)
-    SetHeroAgi(self.Owner.Entity, math.ceil(self.Crit * 100), true)
 end
 
 get["暴击伤害"] = function(self)
@@ -254,14 +230,26 @@ set["暴击伤害"] = function(self, value)
     self.CritDamage = Clamp(value, 2, 2.5)
 end
 
-get["全属性"] = function(self)
-    return self.Attribute
+get["力量"] = function(self)
+    return GetHeroStr(self.Owner.Entity, true)
 end
 
-set["全属性"] = function(self, value)
-    local hero = self.Owner.Entity
-    self.Attribute = value
-    SetHeroStr(hero, value, true)
-    SetHeroAgi(hero, value, true)
-    SetHeroInt(hero, value, true)
+set["力量"] = function(self, value)
+    SetHeroStr(self.Owner.Entity, value, true)
+end
+
+get["敏捷"] = function(self)
+    return GetHeroAgi(self.Owner.Entity, true)
+end
+
+set["敏捷"] = function(self, value)
+    SetHeroAgi(self.Owner.Entity, value, true)
+end
+
+get["智力"] = function(self)
+    return GetHeroInt(self.Owner.Entity, true)
+end
+
+set["智力"] = function(self, value)
+    SetHeroInt(self.Owner.Entity, value, true)
 end

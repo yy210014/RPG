@@ -332,6 +332,9 @@ function GameStart.AnyUnitPickUpItem()
     if (item.LianGongUnitId ~= nil) then
         MonsterRefresh:LianGongRefresh(unit, unit.Player.Id, item.LianGongUnitId)
     end
+    
+    Item.ItemCompound(unit.Entity, item.Entity)
+    Item.ItemUpgrade(unit, item)
     --Game.Log("任意单位获得物品:" .. item.Name)
 end
 

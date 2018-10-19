@@ -41,6 +41,26 @@ local itemComList = {
     {GetId("I077"), GetId("I002"), GetId("I076")} --杀人书:多兰戒+杀人书（卷轴）
 }
 
+local itemUpList = {
+    [GetId("IU00")] = {
+        {GetId("IE87"), GetId("IE88")},
+        {GetId("IE88"), GetId("IE89")},
+        {GetId("IE89"), GetId("IE8a")},
+        {GetId("IE8a"), GetId("IE8b")}
+    },
+    [GetId("IU01")] = {
+        {GetId("IEb7"), GetId("IEb8")},
+        {GetId("IEb8"), GetId("IEb9")},
+        {GetId("IEb9"), GetId("IEba")},
+        {GetId("IEba"), GetId("IEbb")}
+    },
+    [GetId("IU02")] = {
+        {GetId("IE00"), GetId("IE01")},
+        {GetId("IE01"), GetId("IE02")},
+        {GetId("IE02"), GetId("IE03")},
+        {GetId("IE03"), GetId("IE04")}
+    }
+}
 --合成
 function Item.ItemCompound(unit, item)
     local getItemID = GetItemTypeId(item)
@@ -69,6 +89,35 @@ function Item.ItemCompound(unit, item)
     end
 end
 
+--升级装备
+function Item.ItemUpgrade(unit, item)
+    local itemId = tonumber(item.Id)
+    if (itemUpList[itemId] ~= nil) then
+        for k, v in pairs(itemUpList[itemId]) do
+            for k2, v2 in pairs(unit.Items) do
+                if (v[1] == v2.Id) then
+                    RemoveItem(v2.Entity)
+                    local newItem = CreateItem(v[2], unit:X(), unit:Y())
+                    UnitAddItem(unit.Entity, newItem)
+                    DisplayTextToAll("升级物品： " .. GetItemName(newItem), Color.yellow)
+                    return
+                end
+            end
+        end
+        SetPlayerState(
+            unit.Player.Entity,
+            PLAYER_STATE_RESOURCE_GOLD,
+            GetPlayerState(Player(0), PLAYER_STATE_RESOURCE_GOLD) + item.Goldcost
+        )
+        SetPlayerState(
+            unit.Player.Entity,
+            PLAYER_STATE_RESOURCE_LUMBER,
+            GetPlayerState(Player(0), PLAYER_STATE_RESOURCE_LUMBER) + item.Lumbercost
+        )
+        DisplayTextToAll("升级失败，返还金币数量： " .. item.Goldcost .. "，返还木头数量： " .. item.Lumbercost, Color.red)
+    end
+end
+
 function Item:New(owner, entity)
     local newItem = {}
     local name = FilterStringColor(GetItemName(entity))
@@ -76,6 +125,8 @@ function Item:New(owner, entity)
     newItem.Owner = owner
     newItem.Entity = entity
     newItem.Id = GetItemTypeId(entity)
+    newItem.Goldcost = Slk.item[newItem.Id]["goldcost"]
+    newItem.Lumbercost = Slk.item[newItem.Id]["lumbercost"]
     return newItem
 end
 
@@ -115,7 +166,6 @@ function Item:SetCharges(value)
     self.Charges = value
     SetItemCharges(self.Entity, value)
 end
-
 
 Items =
     setmetatable(

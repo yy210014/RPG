@@ -9,7 +9,6 @@ require "scripts.Combat.Items.InitItem"
 require "scripts.Combat.Skills.InitSkill"
 require "scripts.Combat.Locomotions.InitLocomotion"
 require "scripts.Combat.Mission"
-Jglobals = require "jass.globals"
 
 GameScene = {}
 Worke = _array_()
