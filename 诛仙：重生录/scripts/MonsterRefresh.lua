@@ -88,8 +88,8 @@ local mDelayPushTimer = nil
 local mDelayPushTimerDialog = nil
 local mSpawnEnable = false
 local mCurWaveIndex = 1
-local mDelay = 10
-local mDuration = 40
+local mDelay = 180
+local mDuration = 10
 local mRate = 1
 local mMonsterId, mBossId
 
@@ -180,7 +180,7 @@ function MonsterRefresh.OnGameUpdate(dt)
                 return
             end
         else
-            local t4 = 5
+            local t4 = 170
             --每波兵在上一波兵出现后多久倒计时
             mTimeDt4 = mTimeDt4 + dt
             if (mTimeDt4 > t4) then

@@ -47,25 +47,53 @@ end
 
 local item = Items["领取野外击杀鱼怪任务"]
 function item:OnAdd()
-    GameEventProc.SendEvent("领取野外击杀鱼怪任务", 1)
+    GameEventProc.SendEvent("领取野外击杀任务", 1)
 end
 item = Items["领取野外击杀蜘蛛任务"]
 function item:OnAdd()
-    GameEventProc.SendEvent("领取野外击杀蜘蛛任务", 2)
+    GameEventProc.SendEvent("领取野外击杀任务", 2)
 end
 item = Items["领取野外击杀强盗任务"]
 function item:OnAdd()
-    GameEventProc.SendEvent("领取野外击杀强盗任务", 3)
+    GameEventProc.SendEvent("领取野外击杀任务", 3)
 end
 item = Items["领取野外击杀疯狼任务"]
 function item:OnAdd()
-    GameEventProc.SendEvent("领取野外击杀疯狼任务", 4)
+    GameEventProc.SendEvent("领取野外击杀任务", 4)
 end
 item = Items["领取野外击杀狂熊任务"]
 function item:OnAdd()
-    GameEventProc.SendEvent("领取野外击杀狂熊任务", 5)
+    GameEventProc.SendEvent("领取野外击杀任务", 5)
 end
 item = Items["领取野外击杀妖魂任务"]
 function item:OnAdd()
-    GameEventProc.SendEvent("领取野外击杀妖魂任务", 6)
+    GameEventProc.SendEvent("领取野外击杀任务", 6)
+end
+item = Items["领取寻找随机指定物品"]
+function item:OnAdd()
+    GameEventProc.SendEvent("领取寻找随机指定物品")
+end
+item = Items["领取野外击杀变异的人鱼女王任务"]
+function item:OnAdd()
+    GameEventProc.SendEvent("领取野外击杀任务", 7)
+end
+item = Items["领取野外击杀变异的烈火蜘蛛任务"]
+function item:OnAdd()
+    GameEventProc.SendEvent("领取野外击杀任务", 8)
+end
+item = Items["领取野外击杀变异的强盗首领任务"]
+function item:OnAdd()
+    GameEventProc.SendEvent("领取野外击杀任务", 9)
+end
+item = Items["领取野外击杀变异的疯狼王任务"]
+function item:OnAdd()
+    GameEventProc.SendEvent("领取野外击杀任务", 10)
+end
+item = Items["领取野外击杀变异的熊族将军任务"]
+function item:OnAdd()
+    GameEventProc.SendEvent("领取野外击杀任务", 11)
+end
+item = Items["领取野外击杀变异的妖魂女王任务"]
+function item:OnAdd()
+    GameEventProc.SendEvent("领取野外击杀任务", 12)
 end

@@ -65,11 +65,9 @@ local function InitPlayer()
             (GetPlayerController(Player(i)) == MAP_CONTROL_USER and
                 GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING)
          then
-        --local p = GetStartLocationLoc(GetPlayerStartLocation(Player(i)))
-        -- Worke[i] = AssetsManager.LoadUnit(Player(i), "ug00", 0, 0)
-        --  UnitAddItem(Worke[i].Entity, CreateItem(GetId("IU01"), Worke[i]:X(), Worke[i]:Y()))
-        --  UnitAddItem(Worke[i].Entity, CreateItem(GetId("IH07"), Worke[i]:X(), Worke[i]:Y()))
-        --  RemoveGuardPosition(Worke[i].Entity)
+            Worke[i] = AssetsManager.LoadUnit(Player(i), "ug00", GetLocationX(JumpPoint.Home), GetLocationY(JumpPoint.Home))
+            UnitAddItem(Worke[i].Entity, CreateItem(GetId("ID00"), Worke[i]:X(), Worke[i]:Y()))
+            RemoveGuardPosition(Worke[i].Entity)
         end
     end
     SetPlayerState(Player(EnemyIndex), PLAYER_STATE_GIVES_BOUNTY, 1)

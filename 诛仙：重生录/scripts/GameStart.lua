@@ -191,7 +191,7 @@ function GameStart.AnyUnitDeath()
     local dieUnit = GetJ_Units()[GetDyingUnit()]
     if (killUnit == nil or dieUnit == nil) then
         if dieUnit ~= nil and GetUnitAbilityLevel(dieUnit.Entity, GetId("Aloc")) > 0 then
-            --马甲死亡,马甲死亡是没有凶手单位的
+        --马甲死亡,马甲死亡是没有凶手单位的
         end
         return
     end
@@ -332,10 +332,12 @@ function GameStart.AnyUnitPickUpItem()
     if (item.LianGongUnitId ~= nil) then
         MonsterRefresh:LianGongRefresh(unit, unit.Player.Id, item.LianGongUnitId)
     end
-    
+
     Item.ItemCompound(unit.Entity, item.Entity)
     Item.ItemUpgrade(unit, item)
     --Game.Log("任意单位获得物品:" .. item.Name)
+    --额外事件推送
+    GameEventProc.SendEvent("任意单位获得物品", unit, item)
 end
 
 --任意单位使用物品
@@ -346,6 +348,9 @@ function GameStart.AnyUnitUseItem()
         return
     end
     local item = unit.Items[GetManipulatedItem()]
+    if (item == nil) then
+        return
+    end
     --Game.Log("任意单位使用物品:" .. item.Name)
     item:OnUse()
 end
