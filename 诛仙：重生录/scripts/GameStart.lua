@@ -317,20 +317,21 @@ function GameStart.AnyUnitPickUpItem()
     )
 
     --传送道具功能
+    local hero = unit.Id == GetId("ug00") and unit.Player.Hero or unit
     if (item.JumpPoints ~= nil) then
-        unit:SetPosition(
-            GetLocationX(item.JumpPoints[unit.Player.Id + 1]),
-            GetLocationY(item.JumpPoints[unit.Player.Id + 1])
+        hero:SetPosition(
+            GetLocationX(item.JumpPoints[hero.Player.Id + 1]),
+            GetLocationY(item.JumpPoints[hero.Player.Id + 1])
         )
-        PanCameraToTimedLocForPlayer(unit.Player.Entity, item.JumpPoints[unit.Player.Id + 1], 0)
+        PanCameraToTimedLocForPlayer(hero.Player.Entity, item.JumpPoints[hero.Player.Id + 1], 0)
     end
     if (item.JumpPoint ~= nil) then
-        unit:SetPosition(GetLocationX(item.JumpPoint), GetLocationY(item.JumpPoint))
-        PanCameraToTimedLocForPlayer(unit.Player.Entity, item.JumpPoint, 0)
+        hero:SetPosition(GetLocationX(item.JumpPoint), GetLocationY(item.JumpPoint))
+        PanCameraToTimedLocForPlayer(hero.Player.Entity, item.JumpPoint, 0)
     end
     --练功房
     if (item.LianGongUnitId ~= nil) then
-        MonsterRefresh:LianGongRefresh(unit, unit.Player.Id, item.LianGongUnitId)
+        MonsterRefresh:LianGongRefresh(hero, hero.Player.Id, item.LianGongUnitId)
     end
 
     Item.ItemCompound(unit.Entity, item.Entity)
