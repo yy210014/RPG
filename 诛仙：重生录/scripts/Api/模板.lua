@@ -66,3 +66,39 @@ local ap = spellUnit.Attribute:get("魔法攻击")
 local damage = mDamages1[self:GetCurLevel()] + ap * mDamages2[self:GetCurLevel()]
 --伤害
 EXUnitDamageTarget(self.Owner.Entity, unit.Entity, damage, EXDamageType.Physics)
+
+--医疗剂模板
+[ID11] 
+_parent = "phea"
+-- 说明
+Description = "强化S+装备，提升属性"
+-- 名字
+Name = "强化石"
+-- 技能
+abilList = "AI05"
+-- 提示工具 - 扩展
+Ubertip = "|CFFFED312点击左键对道具栏装备使用即可强化|R"
+
+--生命药水模板
+[ID10]
+_parent = "phea"
+-- 说明
+Description = "增加修为2000点"
+-- 名字
+Name = "修为卷轴大"
+-- 技能
+abilList = "AI01"
+
+--攻击之爪模板
+[IE0d]
+_parent = "rat6"
+-- 说明
+Description = ""
+-- 名字
+Name = "枯骨盔Lv1"
+-- 提示工具 - 基础
+Tip = ""
+-- 提示工具 - 扩展
+Ubertip = "能增加英雄全属性的装备"
+-- 技能
+abilList = ""
