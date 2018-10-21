@@ -13,9 +13,6 @@ function AddCameraFieldForPlayer(player)
     local player = player.Entity
     local nowCameraField = GetCameraTargetPositionZ()
     nowCameraField = nowCameraField + 100
-    if (nowCameraField > 600) then
-        nowCameraField = 600
-    end
     SetCameraFieldForPlayer(player, CAMERA_FIELD_ZOFFSET, nowCameraField, 0)
 end
 

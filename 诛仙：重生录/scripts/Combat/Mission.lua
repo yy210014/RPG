@@ -23,8 +23,8 @@ MissionState = {
     技能书-勇武之气、技能书-裂魂咒、技能书-破心咒、技能书-生命汲取
 ]]
 MissionRandomItem = {
-    --[[GetId("u023"), GetId("u023"), GetId("u023"), GetId("u023"), GetId("u023"),
-    GetId("u023"), GetId("u023"), GetId("u023"), ]]GetId("IA21"), GetId("IA00"),
+    GetId("ID15"), GetId("ID16"), GetId("ID17"), GetId("ID18"), GetId("ID19"),
+    GetId("ID1a"), GetId("ID1b"), GetId("ID1c"), GetId("IA21"), GetId("IA00"),
     GetId("IA02"), GetId("IA05"), GetId("IA10"), GetId("IA04"), GetId("IA07"),
     GetId("IA15"), GetId("IA14"), GetId("IA09"), GetId("IA12")
 }
