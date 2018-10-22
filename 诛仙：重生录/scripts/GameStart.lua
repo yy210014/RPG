@@ -13,7 +13,7 @@ function GameStart.OnGameStart()
     FogMaskEnable(false)
     --禁用战争迷雾
     FogEnable(false)
-    SetCameraField(CAMERA_FIELD_ZOFFSET, 200, 0)
+    SetCameraField(CAMERA_FIELD_ZOFFSET, 800, 0)
     Game.ChooseLevel()
 end
 
