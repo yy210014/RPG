@@ -11,7 +11,6 @@ mt.Items = nil
 mt.Player = nil
 mt.Name = "name"
 mt.Id = 0
-mt.ManaType = 0 -- -1什么都没有 0蓝量英雄 1能量英雄 2怒气英雄
 mt.LastFightTime = 0
 
 function Unit:New(entity)
@@ -35,19 +34,6 @@ function Unit:New(entity)
     newUnit.Buffs = {}
     newUnit.Items = {}
     newUnit.Texts = {}
-    newUnit.ManaType = 0
-    if GetUnitAbilityLevel(entity, GetId("AHZ3")) > 0 then
-        SetUnitState(entity, UNIT_STATE_MAX_MANA, 0)
-        newUnit.ManaType = -1
-    elseif GetUnitAbilityLevel(entity, GetId("AHZ4")) > 0 then
-        SetUnitState(entity, UNIT_STATE_MAX_MANA, 100)
-        SetUnitState(entity, UNIT_STATE_MANA, 100)
-        newUnit.ManaType = 1
-    elseif GetUnitAbilityLevel(entity, GetId("AHZ5")) > 0 then
-        SetUnitState(entity, UNIT_STATE_MAX_MANA, 100)
-        SetUnitState(entity, UNIT_STATE_MANA, 0)
-        newUnit.ManaType = 2
-    end
     return newUnit
 end
 
