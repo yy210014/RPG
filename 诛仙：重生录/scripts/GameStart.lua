@@ -29,7 +29,7 @@ function GameStart.AnyUnitSelected(trig)
         return
     end
 
-    if (IsUnitType(unit.Entity, UNIT_TYPE_HERO) and unit.Player.Id == FirendIndex) then
+    if (unit.Player.Hero == nil and IsUnitType(unit.Entity, UNIT_TYPE_HERO) and unit.Player.Id == FirendIndex) then
         if (GameScene.Elapsed - mLastSelectedTime < 0.4) then
             unit:SetUnitOwner(GetTriggerPlayer())
             unit.Player.Hero = unit
