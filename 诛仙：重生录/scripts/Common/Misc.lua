@@ -84,6 +84,10 @@ function cheat()
 end
 
 function GetId(strName)
+    if (#strName ~= 4) then
+        Game.LogError("ID长度错误")
+        return -1
+    end
     local i = string.byte(strName, 1)
     i = i * 256 + string.byte(strName, 2)
     i = i * 256 + string.byte(strName, 3)

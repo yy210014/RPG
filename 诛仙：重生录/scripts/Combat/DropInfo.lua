@@ -1,4 +1,6 @@
-DropInfo = {
+DropInfo={}
+
+local mDropInfos = {
     ["进攻怪"] = {
         {
             8,
@@ -47,7 +49,7 @@ DropInfo = {
         }
     },
     --仙帝BOSS
-    [GetId("")] = {
+    [""] = {
         {
             100,
             GetId("ID49")
@@ -569,6 +571,10 @@ DropInfo = {
         }
     }
 }
+
+function DropInfo:New(key)
+    return mDropInfos[key]
+end
 
 --[[进攻怪	水果，裙子，零食，山水图，古书，玫瑰，胭脂，石头/8%							
 仇恨天	随机S+装备/100%							

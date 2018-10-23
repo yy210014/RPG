@@ -1,3 +1,5 @@
+require "scripts.Combat.DropInfo"
+
 Unit = {}
 local mt = {}
 Unit.__index = mt
@@ -21,10 +23,11 @@ function Unit:New(entity)
     local newUnit = {}
     setmetatable(newUnit, {__index = Unit})
     newUnit.Entity = entity
-    newUnit.Attribute = Attribute:New(newUnit)
     newUnit.Player = PlayerInfo:Player(GetPlayerId(GetOwningPlayer(entity)))
     newUnit.Name = GetUnitName(entity)
     newUnit.Id = GetUnitTypeId(entity)
+    newUnit.Attribute = Attribute:New(newUnit)
+    newUnit.DropInfo = DropInfo:New(newUnit.Id)
     newUnit.LastFightTime = 0
     newUnit.DieTime = 5
     newUnit.LifeDt = 0
@@ -162,6 +165,8 @@ function Unit:Destroy(destroy)
         self.Entity = nil
         self.Player = nil
         self.Effect = nil
+    else
+        self:DropItem()
     end
 end
 
@@ -221,6 +226,20 @@ end
 function Unit:SetUnitOwner(player)
     SetUnitOwner(self.Entity, player, true)
     self.Player = PlayerInfo:Player(GetPlayerId(player))
+end
+
+function Unit:DropItem()
+    if (self.DropInfo == nil) then
+        return
+    end
+    local random = math.random(0, 100)
+    for k, v in pairs(self.DropInfo) do
+        if (random <= v[1]) then
+            local dropItemId = v[math.random(2, #v)]
+            local itemAXAD = CreateItem(dropItemId, self:X(), self:Y())
+            return
+        end
+    end
 end
 
 function Unit:OnGameUpdate(dt)

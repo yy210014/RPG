@@ -109,6 +109,7 @@ local function Spawn(spawnPoint, Id)
     --  unit.Attribute:add("生命上限", 200)
     unit.Attribute:add("生命", unit.Attribute:get("生命上限"))
     unit.Attribute:add("魔法值", unit.Attribute:get("魔法上限"))
+    unit.DropInfo = DropInfo:New("进攻怪")
     --SetUnitPathing(unit.Entity, false)
     IssuePointOrderLoc(unit.Entity, "attack", JumpPoint.Home)
 end
