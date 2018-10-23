@@ -35,7 +35,7 @@ function LianGong:UnitDeath(unit)
     self.Monsters[unit] = nil
     self.MonsterCount = self.MonsterCount - 1
     if (self.MonsterCount <= 0) then
-        self:Refresh(ID2Str(unit.Id))
+        self:Refresh(unit.Id)
     end
 end
 
@@ -104,7 +104,7 @@ local function IsBOSS(lv)
 end
 
 local function Spawn(spawnPoint, Id)
-    local unit = AssetsManager.LoadUnitAtLoc(Player(EnemyIndex), Id, spawnPoint)
+    local unit = AssetsManager.LoadUnitAtLoc(Player(EnemyIndex), GetId(Id), spawnPoint)
     --  unit.Attribute:add("护甲", 10)
     --  unit.Attribute:add("生命上限", 200)
     unit.Attribute:add("生命", unit.Attribute:get("生命上限"))

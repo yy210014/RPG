@@ -2,7 +2,7 @@ AssetsManager = {}
 
 local mPlayerTeamUnits = {}
 local mEnemyTeamUnits = {}
-local mDefUnitFacing = 270.0
+local mDefUnitFacing = 270
 local mJ_Units = {}
 local mDyingUnits = {}
 
@@ -23,7 +23,7 @@ function GetEnemyTeamUnits()
 end
 
 function AssetsManager.LoadUnit(player, id, x, y)
-    local entity = CreateUnit(player, GetId(id), x, y, mDefUnitFacing)
+    local entity = CreateUnit(player, id, x, y, mDefUnitFacing)
     local unit = Unit:New(entity)
     if (unit.Player.Id == EnemyIndex) then
         mEnemyTeamUnits[unit.Entity] = unit
@@ -46,7 +46,7 @@ function AssetsManager.LoadUnit(player, id, x, y)
 end
 
 function AssetsManager.LoadUnitAtLoc(player, id, point)
-    local entity = CreateUnitAtLoc(player, GetId(id), point, mDefUnitFacing)
+    local entity = CreateUnitAtLoc(player, id, point, mDefUnitFacing)
     local unit = Unit:New(entity)
     if (unit.Player.Id == EnemyIndex) then
         mEnemyTeamUnits[unit.Entity] = unit
@@ -136,6 +136,16 @@ function AssetsManager.OnGameUpdate(dt)
         mDyingUnits[i]:OnDyingUpdate(dt)
         mDyingUnits[i].LifeDt = mDyingUnits[i].LifeDt + dt
         if (mDyingUnits[i].LifeDt >= mDyingUnits[i].DieTime) then
+            if (mDyingUnits[i].InitPoint ~= nil) then
+                local newUnit =
+                    AssetsManager.LoadUnitAtLoc(
+                    mDyingUnits[i].Player.Entity,
+                    mDyingUnits[i].Id,
+                    mDyingUnits[i].InitPoint
+                ) --野怪复活
+                newUnit.InitPoint = mDyingUnits[i].InitPoint
+            end
+
             mDyingUnits[i]:Destroy(true)
             table.remove(mDyingUnits, i)
         end

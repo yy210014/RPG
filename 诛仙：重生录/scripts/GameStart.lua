@@ -213,9 +213,6 @@ function GameStart.AnyUnitDeath()
     if (IsUnitType(dieUnit.Entity, UNIT_TYPE_HERO) == true) then
     end
 
-    --死亡单位是野怪
-    if (dieUnit.InitPoint ~= nil) then
-    end
     if (killUnit.Player.Id ~= PLAYER_NEUTRAL_AGGRESSIVE and killUnit.Player.Id ~= EnemyIndex) then
         PlayerInfo:Kill(killUnit.Player)
     end

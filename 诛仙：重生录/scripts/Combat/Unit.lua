@@ -22,7 +22,7 @@ function Unit:New(entity)
     setmetatable(newUnit, {__index = Unit})
     newUnit.Entity = entity
     newUnit.Attribute = Attribute:New(newUnit)
-    newUnit.Player = PlayerInfo:Player(GetPlayerId(GetOwningPlayer(entity)))  
+    newUnit.Player = PlayerInfo:Player(GetPlayerId(GetOwningPlayer(entity)))
     newUnit.Name = GetUnitName(entity)
     newUnit.Id = GetUnitTypeId(entity)
     newUnit.LastFightTime = 0
@@ -220,7 +220,7 @@ end
 
 function Unit:SetUnitOwner(player)
     SetUnitOwner(self.Entity, player, true)
-    self.Player = PlayerInfo:Player(GetPlayerId(player))  
+    self.Player = PlayerInfo:Player(GetPlayerId(player))
 end
 
 function Unit:OnGameUpdate(dt)
