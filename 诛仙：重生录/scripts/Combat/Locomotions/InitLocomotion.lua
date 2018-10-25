@@ -1,4 +1,4 @@
 require "scripts.Combat.Locomotion"
-require "scripts.Combat.Locomotions.冲锋"
-require "scripts.Combat.Locomotions.击飞"
-require "scripts.Combat.Locomotions.跳跃"
+require "scripts.Combat.Locomotions.L001"
+require "scripts.Combat.Locomotions.L002"
+require "scripts.Combat.Locomotions.L003"

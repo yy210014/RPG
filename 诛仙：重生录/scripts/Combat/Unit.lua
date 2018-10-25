@@ -236,7 +236,7 @@ function Unit:DropItem()
     for k, v in pairs(self.DropInfo) do
         if (random <= v[1]) then
             local dropItemId = v[math.random(2, #v)]
-            local itemAXAD = CreateItem(dropItemId, self:X(), self:Y())
+            CreateItem(dropItemId, self:X(), self:Y())
             return
         end
     end
