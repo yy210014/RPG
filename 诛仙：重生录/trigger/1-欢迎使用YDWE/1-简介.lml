@@ -1,8 +1,9 @@
 事件
-    TriggerRegisterTimerEventSingle
-        常量: 0.00
+    MapInitializationEvent
 条件
 动作
+    CustomScriptCode
+        常量: 'call Cheat("exec-lua:scripts.main")'
     FogEnable
         预设: EnabledDisabledDisabled
     FogMaskEnableOff
