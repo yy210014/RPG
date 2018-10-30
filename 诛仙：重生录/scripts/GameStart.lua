@@ -22,24 +22,46 @@ function GameStart.OnGameUpdate(dt)
     GameScene.OnGameUpdate(dt)
 end
 
+tianfu = {
+    {GetId("UH06"), GetId("AH21")}, --英雄：阿刀 天赋：聚宝
+    {GetId("UH10"), GetId("AH22")}, --英雄：姜承 天赋：迷惑体质
+    {GetId("UH09"), GetId("AH23")}, --英雄：迪塔斯 天赋：守护之灵
+    {GetId("UH11"), GetId("AH24")}, --英雄：九梦 天赋：破而后立
+    {GetId("UH15"), GetId("AH25")}, --英雄：美狄亚 天赋：混沌法术
+    {GetId("UH14"), GetId("AH26")}, --英雄：银子龙 天赋：九天衣
+    {GetId("UH05"), GetId("AH27")}, --英雄：八重樱 天赋：厄难毒体
+    {GetId("UH07"), GetId("AH28")}, --英雄：白斩月 天赋：粉碎重击
+    {GetId("UH13"), GetId("AH29")}, --英雄：墨萧 天赋：敏锐思维
+    {GetId("UH12"), GetId("AH30")}, --英雄：克劳德 天赋：先天资质
+    {GetId("UH08"), GetId("AH31")}, --英雄：谷南 天赋：石裔契约
+    {GetId("UH00"), GetId("AH32")}, --英雄：吕小布 天赋：玄天力
+    {GetId("UH01"), GetId("AH32")}, --英雄：漠七 天赋：玄天力
+    {GetId("UH03"), GetId("AH33")}, --英雄：龙游九州 天赋：仙帝血脉
+    {GetId("UH04"), GetId("AH33")}, --英雄：七夜 天赋：仙帝血脉
+    {GetId("UH02"), GetId("AH33")} --英雄：魔神 天赋：仙帝血脉
+}
+
 local mLastSelectedTime = 0
+local mLastSelectedUnit = nil
 function GameStart.AnyUnitSelected(trig)
     local unit = GetJ_Units()[GetTriggerUnit()]
     if (unit == nil) then
         return
     end
-
+    Game.Log("unit.Player.Id :" .. unit.Player.Id)
     if (unit.Player.Hero == nil and IsUnitType(unit.Entity, UNIT_TYPE_HERO) and unit.Player.Id == FirendIndex) then
-        if (GameScene.Elapsed - mLastSelectedTime < 0.4) then
+        if (GameScene.Elapsed - mLastSelectedTime < 0.4 and mLastSelectedUnit == unit) then
             unit:SetUnitOwner(GetTriggerPlayer())
             unit.Player.Hero = unit
             unit.Attribute:add("物理攻击加成", 1000000000)
             unit.Attribute:add("护甲", 10000)
             SetUnitPositionLoc(unit.Entity, JumpPoint.Home)
             PanCameraToTimedLocForPlayer(unit.Player.Entity, JumpPoint.Home, 0)
+            --添加天赋
             DestroyTrigger(trig)
         end
         mLastSelectedTime = GameScene.Elapsed
+        mLastSelectedUnit = unit
     end
 end
 
@@ -237,6 +259,8 @@ function GameStart.AnyHeroLevelUp()
             item:OnRefresh()
         end
     )
+    --额外事件推送
+    GameEventProc.SendEvent("任意单位提升等级", unit)
 end
 
 --任意单位学习技能

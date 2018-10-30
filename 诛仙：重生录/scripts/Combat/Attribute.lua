@@ -18,6 +18,12 @@ Attribute.Cooldown = 0
 Attribute.Crit = 0
 --暴击伤害(最高250%)
 Attribute.CritDamage = 2
+--ad伤害加成
+Attribute.ADDamage = 1
+--ap伤害加成
+Attribute.APDamage = 1
+--伤害减免
+Attribute.DamageReduction = 0
 --回蓝速度/s
 Attribute.RegenMana = 0
 --移动速度加成
@@ -27,7 +33,9 @@ Attribute.Attribute = 0
 local attribute = {
     ["物理攻击"] = true, --ad(基础攻击)
     ["物理攻击加成"] = true, --ad加成
+    ["物理伤害加成"] = true, --ad伤害加成
     ["魔法攻击"] = true,
+    ["法术伤害加成"] = true, --ap伤害加成
     ["物理穿透"] = true,
     ["法术穿透"] = true,
     ["攻击速度"] = true,
@@ -44,7 +52,8 @@ local attribute = {
     ["护甲"] = true,
     ["力量"] = true,
     ["敏捷"] = true,
-    ["智力"] = true
+    ["智力"] = true,
+    ["伤害减免"] = true
 }
 
 local set = {}
@@ -100,6 +109,14 @@ set["物理攻击加成"] = function(self, value)
     SetUnitState(self.Owner.Entity, ConvertUnitState(0x13), Clamp(value, 0, value))
 end
 
+get["物理伤害加成"] = function(self)
+    return self.ADDamage
+end
+
+set["物理伤害加成"] = function(self, value)
+    self.ADDamage = Clamp(value, 1, value)
+end
+
 get["魔法攻击"] = function(self)
     return Clamp(self.Ap, 0, self.Ap)
 end
@@ -107,6 +124,14 @@ end
 set["魔法攻击"] = function(self, value)
     self.Ap = Clamp(value, 0, value)
     SetHeroStr(self.Owner.Entity, self.Ap, true)
+end
+
+get["法术伤害加成"] = function(self)
+    return self.APDamage
+end
+
+set["法术伤害加成"] = function(self, value)
+    self.APDamage = Clamp(value, 1, value)
 end
 
 get["物理穿透"] = function(self)
@@ -252,4 +277,12 @@ end
 
 set["智力"] = function(self, value)
     SetHeroInt(self.Owner.Entity, value, true)
+end
+
+get["伤害减免"] = function(self)
+    return self.DamageReduction
+end
+
+set["伤害减免"] = function(self, value)
+    self.DamageReduction = Clamp(value, 0, 1)
 end

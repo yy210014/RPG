@@ -107,12 +107,12 @@ function Item.ItemUpgrade(unit, item)
         SetPlayerState(
             unit.Player.Entity,
             PLAYER_STATE_RESOURCE_GOLD,
-            GetPlayerState(Player(0), PLAYER_STATE_RESOURCE_GOLD) + item.Goldcost
+            GetPlayerState(unit.Player.Entity, PLAYER_STATE_RESOURCE_GOLD) + item.Goldcost
         )
         SetPlayerState(
             unit.Player.Entity,
             PLAYER_STATE_RESOURCE_LUMBER,
-            GetPlayerState(Player(0), PLAYER_STATE_RESOURCE_LUMBER) + item.Lumbercost
+            GetPlayerState(unit.Player.Entity, PLAYER_STATE_RESOURCE_LUMBER) + item.Lumbercost
         )
         DisplayTextToAll("升级失败，返还金币数量： " .. item.Goldcost .. "，返还木头数量： " .. item.Lumbercost, Color.red)
     end

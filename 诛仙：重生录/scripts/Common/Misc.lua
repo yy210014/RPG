@@ -57,24 +57,12 @@ function cheat()
     local y = GetUnitY(Worke[0].Entity)
     local offX = 0
     local offY = 0
-    local id = "I0"
-    for k, v in pairs(mCheatItems) do
+    local id = "IA"
+    for i = 0, 33 do
         offX = math.random(0, 600) * math.cos(math.random(0, 360))
         offY = math.random(0, 600) * math.sin(math.random(0, 360))
-        CreateItem(GetId(id .. v), x + offX, y + offY)
-    end
-
-    for i = 0, 3 do
-        if
-            (GetPlayerController(Player(i)) == MAP_CONTROL_USER and
-                GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING)
-         then
-            SetPlayerState(Player(i), PLAYER_STATE_RESOURCE_GOLD, 100000)
-            UnitAddItem(Worke[i].Entity, CreateItem(GetId("IH01"), Worke[i]:X(), Worke[i]:Y()))
-            for j = 0, 4 do
-                UnitAddItem(Worke[i].Entity, CreateItem(GetId("IU01"), Worke[i]:X(), Worke[i]:Y()))
-            end
-        end
+        id = #tostring(i) == 1 and "IA0" .. i or "IA" .. i
+        CreateItem(GetId(id), x + offX, y + offY)
     end
 
     --遍历出所有状态
@@ -85,7 +73,7 @@ end
 
 function GetId(strName)
     if (#strName ~= 4) then
-        Game.LogError("ID长度错误")
+        Game.LogError("ID长度错误:" .. strName)
         return -1
     end
     local i = string.byte(strName, 1)

@@ -97,3 +97,186 @@ item = Items["领取野外击杀变异的妖魂女王任务"]
 function item:OnAdd()
     GameEventProc.SendEvent("领取野外击杀任务", 12)
 end
+item = Items["技能卷轴：无中生有"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH01")
+end
+item = Items["进阶卷轴：无中生有"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH01"))
+end
+item = Items["技能卷轴：无懈可击"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH02")
+end
+item = Items["进阶卷轴：无懈可击"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH02"))
+end
+item = Items["技能卷轴：静止陷阱"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH03")
+end
+item = Items["进阶卷轴：静止陷阱"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH03"))
+end
+item = Items["技能卷轴：献祭"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH04")
+end
+item = Items["进阶卷轴：献祭"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH04"))
+end
+item = Items["技能卷轴：狂牛冲锋"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH05")
+end
+item = Items["进阶卷轴：狂牛冲锋"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH05"))
+end
+item = Items["技能卷轴：蛮牛踏击"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH06")
+end
+item = Items["进阶卷轴：蛮牛踏击"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH06"))
+end
+item = Items["技能卷轴：无影盗手"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH07")
+end
+item = Items["进阶卷轴：无影盗手"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH07"))
+end
+item = Items["技能卷轴：鬼推磨"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH08")
+end
+item = Items["进阶卷轴：鬼推磨"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH08"))
+end
+item = Items["技能卷轴：有勇有谋"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH09")
+end
+item = Items["进阶卷轴：有勇有谋"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH09"))
+end
+item = Items["技能卷轴：勇武之气"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH10")
+end
+item = Items["进阶卷轴：勇武之气"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH10"))
+end
+item = Items["技能卷轴：裂魂咒"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH11")
+end
+item = Items["进阶卷轴：裂魂咒"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH11"))
+end
+item = Items["技能卷轴：破心咒"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH12")
+end
+item = Items["进阶卷轴：破心咒"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH12"))
+end
+item = Items["技能卷轴：生命汲取"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH13")
+end
+item = Items["进阶卷轴：生命汲取"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH13"))
+end
+item = Items["技能卷轴：生命奉献"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH14")
+end
+item = Items["进阶卷轴：生命奉献"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH14"))
+end
+item = Items["技能卷轴：混沌拳"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH15")
+end
+item = Items["技能卷轴：真·混沌拳"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH16")
+end
+item = Items["技能卷轴：先古秘法·力量"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH17")
+end
+item = Items["进阶卷轴：先古秘法·力量"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH17"))
+end
+item = Items["技能卷轴：先古秘法·敏捷"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH18")
+end
+item = Items["进阶卷轴：先古秘法·敏捷"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH18"))
+end
+item = Items["技能卷轴：先古秘法·智力"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH19")
+end
+item = Items["进阶卷轴：先古秘法·智力"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH19"))
+end
+item = Items["技能卷轴：先古秘法·奥义"]
+function item:OnUse()
+    AddSkill(self, self.Owner, "AH20")
+end
+item = Items["进阶卷轴：先古秘法·奥义"]
+function item:OnUse()
+    SkillLevelUp(self, self.Owner, GetId("AH20"))
+end
+
+function AddSkill(self, unit, skillId)
+    local skill = unit.Skills[skillId]
+    if (skill ~= nil) then
+        DisplayTextToAll("学习技能失败，您已拥有该技能!", Color.red)
+        SetItemCharges(self.Entity, 1)
+        return
+    end
+    unit:AddSkill(skillId)
+    RemoveItem(self.Entity)
+    DisplayTextToAll("学习技能成功!", Color.yellow)
+end
+
+function SkillLevelUp(self, unit, skillId)
+    local skill = unit.Skills[skillId]
+    if (skill == nil) then
+        DisplayTextToAll("进阶失败，请确认是否拥有该技能!", Color.red)
+        SetItemCharges(self.Entity, 1)
+        return
+    end
+    local skillLevel = GetUnitAbilityLevel(unit.Entity, skillId)
+    if (skillLevel >= 10) then
+        DisplayTextToAll("进阶失败，该技能已经升至满级!", Color.red)
+        SetItemCharges(self.Entity, 1)
+        return
+    end
+    Game.Log("skillLevel: " .. skillLevel)
+    SetUnitAbilityLevel(unit.Entity, skillId, skillLevel + 1)
+    RemoveItem(self.Entity)
+    DisplayTextToAll("进阶技能成功!", Color.yellow)
+end

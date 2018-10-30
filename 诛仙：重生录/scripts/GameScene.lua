@@ -70,6 +70,7 @@ local function InitPlayer()
             RemoveGuardPosition(Worke[i].Entity)
         end
     end
+    cheat()
     SetPlayerState(Player(EnemyIndex), PLAYER_STATE_GIVES_BOUNTY, 1)
 end
 
