@@ -22,27 +22,28 @@ function GameStart.OnGameUpdate(dt)
     GameScene.OnGameUpdate(dt)
 end
 
-tianfu = {
-    {GetId("UH06"), GetId("AH21")}, --英雄：阿刀 天赋：聚宝
-    {GetId("UH10"), GetId("AH22")}, --英雄：姜承 天赋：迷惑体质
-    {GetId("UH09"), GetId("AH23")}, --英雄：迪塔斯 天赋：守护之灵
-    {GetId("UH11"), GetId("AH24")}, --英雄：九梦 天赋：破而后立
-    {GetId("UH15"), GetId("AH25")}, --英雄：美狄亚 天赋：混沌法术
-    {GetId("UH14"), GetId("AH26")}, --英雄：银子龙 天赋：九天衣
-    {GetId("UH05"), GetId("AH27")}, --英雄：八重樱 天赋：厄难毒体
-    {GetId("UH07"), GetId("AH28")}, --英雄：白斩月 天赋：粉碎重击
-    {GetId("UH13"), GetId("AH29")}, --英雄：墨萧 天赋：敏锐思维
-    {GetId("UH12"), GetId("AH30")}, --英雄：克劳德 天赋：先天资质
-    {GetId("UH08"), GetId("AH31")}, --英雄：谷南 天赋：石裔契约
-    {GetId("UH00"), GetId("AH32")}, --英雄：吕小布 天赋：玄天力
-    {GetId("UH01"), GetId("AH32")}, --英雄：漠七 天赋：玄天力
-    {GetId("UH03"), GetId("AH33")}, --英雄：龙游九州 天赋：仙帝血脉
-    {GetId("UH04"), GetId("AH33")}, --英雄：七夜 天赋：仙帝血脉
-    {GetId("UH02"), GetId("AH33")} --英雄：魔神 天赋：仙帝血脉
+local mHeroTianfu = {
+    [GetId("UH06")] = "AH21", --英雄：阿刀 天赋：聚宝
+    [GetId("UH10")] = "AH22", --英雄：姜承 天赋：迷惑体质
+    [GetId("UH09")] = "AH23", --英雄：迪塔斯 天赋：守护之灵
+    [GetId("UH11")] = "AH24", --英雄：九梦 天赋：破而后立
+    [GetId("UH15")] = "AH25", --英雄：美狄亚 天赋：混沌法术
+    [GetId("UH14")] = "AH26", --英雄：银子龙 天赋：九天衣
+    [GetId("UH05")] = "AH27", --英雄：八重樱 天赋：厄难毒体
+    [GetId("UH07")] = "AH28", --英雄：白斩月 天赋：粉碎重击
+    [GetId("UH13")] = "AH29", --英雄：墨萧 天赋：敏锐思维
+    [GetId("UH12")] = "AH30", --英雄：克劳德 天赋：先天资质
+    [GetId("UH08")] = "AH31", --英雄：谷南 天赋：石裔契约
+    [GetId("UH00")] = "AH32", --英雄：吕小布 天赋：玄天力
+    [GetId("UH01")] = "AH32", --英雄：漠七 天赋：玄天力
+    [GetId("UH03")] = "AH33", --英雄：龙游九州 天赋：仙帝血脉
+    [GetId("UH04")] = "AH33", --英雄：七夜 天赋：仙帝血脉
+    [GetId("UH02")] = "AH33" --英雄：魔神 天赋：仙帝血脉
 }
 
 local mLastSelectedTime = 0
 local mLastSelectedUnit = nil
+SelectedHeroTrigger = {}
 function GameStart.AnyUnitSelected(trig)
     local unit = GetJ_Units()[GetTriggerUnit()]
     if (unit == nil) then
@@ -58,7 +59,11 @@ function GameStart.AnyUnitSelected(trig)
             SetUnitPositionLoc(unit.Entity, JumpPoint.Home)
             PanCameraToTimedLocForPlayer(unit.Player.Entity, JumpPoint.Home, 0)
             --添加天赋
-            DestroyTrigger(trig)
+            if (mHeroTianfu[unit.Id] ~= nil) then
+                unit:AddSkill(mHeroTianfu[unit.Id])
+            end
+            DestroyTrigger(SelectedHeroTrigger[unit.Player.Id + 1])
+            SelectedHeroTrigger[unit.Player.Id + 1] = nil
         end
         mLastSelectedTime = GameScene.Elapsed
         mLastSelectedUnit = unit

@@ -42,7 +42,7 @@ Mission.AnyUnitDeath = function(killUnit, dieUnit)
         if (v[2] == true) then
             if (v[4] == dieUnit.Id) then
                 v.Count = v.Count + 1
-                DisplayTextToAll("击杀" .. v[1] .. "数量：" .. v.Count, Color.yellow)
+                DisplayTextToAll("击杀" .. v[1] .. "数量：" .. v.Count.. "/10", Color.yellow)
                 if (v.Count >= v.MaxCount) then
                     GameEventProc.SendEvent("任意单位完成任务", index)
                 end

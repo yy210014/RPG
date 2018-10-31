@@ -53,7 +53,9 @@ local attribute = {
     ["力量"] = true,
     ["敏捷"] = true,
     ["智力"] = true,
-    ["伤害减免"] = true
+    ["伤害减免"] = true,
+    ["吸血"] = true
+    
 }
 
 local set = {}

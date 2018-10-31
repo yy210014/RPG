@@ -34,12 +34,12 @@ function main()
     )
 
     for i = 0, PlayerCount do
-        trig = CreateTrigger()
-        TriggerRegisterPlayerUnitEvent(trig, Player(i), EVENT_PLAYER_UNIT_SELECTED, null)
+        SelectedHeroTrigger[i + 1] = CreateTrigger()
+        TriggerRegisterPlayerUnitEvent(SelectedHeroTrigger[i + 1] , Player(i), EVENT_PLAYER_UNIT_SELECTED, null)
         TriggerAddAction(
-            trig,
+            SelectedHeroTrigger[i + 1] ,
             function()
-                GameStart.AnyUnitSelected(trig)
+                GameStart.AnyUnitSelected(SelectedHeroTrigger[i + 1] )
             end
         )
     end

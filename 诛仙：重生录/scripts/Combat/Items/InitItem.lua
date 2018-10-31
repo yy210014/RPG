@@ -4,7 +4,7 @@ require "scripts.Combat.Items.ItemArmor"
 require "scripts.Combat.Items.ItemHelmet"
 
 function InitItem()
-    Items["进入练功房"].JumpPoints = {JumpPoint.LianGong1, JumpPoint.LianGong2, JumpPoint.LianGong3, JumpPoint.LianGong4}
+    Items["进入练功房"].JumpPoints = { JumpPoint.LianGong1, JumpPoint.LianGong2, JumpPoint.LianGong3, JumpPoint.LianGong4 }
     Items["狂狼巢穴"].JumpPoint = JumpPoint.KuangLang
     Items["青衣冢"].JumpPoint = JumpPoint.QingYi
     Items["火岩洞穴"].JumpPoint = JumpPoint.HuoYan
@@ -35,14 +35,14 @@ function InitItem()
     Items["指天神殿"].JumpPoint = JumpPoint.ZhiTian
     Items["履霜密境"].JumpPoint = JumpPoint.LvShuangBoss
     Items["挑战上古神族族长"].JumpPoint = JumpPoint.God
-    Items["金币房"].LianGongUnitId = "u000"
-    Items["高级金币房"].LianGongUnitId = "u001"
-    Items["超级金币房"].LianGongUnitId = "u002"
-    Items["终极金币房"].LianGongUnitId = "u003"
-    Items["修为怪"].LianGongUnitId = "o000"
-    Items["高级修为怪"].LianGongUnitId = "u005"
-    Items["宝石怪"].LianGongUnitId = "u006"
-    Items["上古神石怪"].LianGongUnitId = "u007"
+    Items["金币房"].LianGongUnitId = GetId("u000")
+    Items["高级金币房"].LianGongUnitId = GetId("u001")
+    Items["超级金币房"].LianGongUnitId = GetId("u002")
+    Items["终极金币房"].LianGongUnitId = GetId("u003")
+    Items["修为怪"].LianGongUnitId = GetId("o000")
+    Items["高级修为怪"].LianGongUnitId = GetId("u005")
+    Items["宝石怪"].LianGongUnitId = GetId("u006")
+    Items["上古神石怪"].LianGongUnitId = GetId("u007")
 end
 
 local item = Items["领取野外击杀鱼怪任务"]

@@ -58,6 +58,7 @@ function Unit:AddSkill(abilityid)
     UnitMakeAbilityPermanent(self.Entity, true, abilityid)
     local skill = Skill:New(self, abilityid)
     self.Skills[abilityid] = skill
+    skill:OnLearned()
     return skill
 end
 

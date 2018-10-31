@@ -147,6 +147,7 @@ function PushWave()
         mBossId = "UB0" .. mCurWaveIndex / 10
     end
     mSpawnEnable = true
+    GameEventProc.SendEvent("PushWave", mCurWaveIndex)
 end
 
 function WavesClear()
